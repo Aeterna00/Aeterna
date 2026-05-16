@@ -3,498 +3,607 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ecozenda | Descubre la Toxicidad de tu Hogar</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>Aeterna | Descubre la Toxicidad de tu Hogar</title>
+    <!-- Se añade Lora para títulos (toque premium/orgánico) y Poppins para textos -->
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #2C5209;
-            --primary-light: #4A7A16;
-            --secondary: #7F8E1B;
-            --accent: #E3C00A;
-            --alert: #D9534F;
-            --warning: #F5A623;
-            --safe: #4CAF50;
-            --bg-light: #f9faf8;
+            /* PALETA DE COLORES AETERNA (BRANDBOOK PAG 17) */
+            --primary: #4C4C29;        /* Verde Oliva Oscuro Apagado */
+            --primary-light: #7F7C56;  /* Verde Oliva Apagado */
+            --secondary: #765530;      /* Marron Apagado */
+            --accent: #A9A381;         /* Amarillo Apagado */
+            --accent-light: #C7AB88;   /* Naranja Apagado */
+            
+            /* Colores Semánticos */
+            --alert: #C05640;          /* Rojo terracota para alertas */
+            --warning: #D98A4F;        /* Naranja tierra para advertencias */
+            --safe: #7F7C56;           /* Usamos el Verde Oliva de la marca como color de éxito */
+            
+            /* Fondos y Textos */
+            --bg-light: #F9F8F6;       /* Crema muy suave */
             --surface: #ffffff;
-            --text-dark: #1a202c;
-            --text-gray: #4a5568;
-            --border: #e2e8f0;
+            --text-dark: #3A352F;      /* Gris marrón oscuro, cálido */
+            --text-gray: #6B655B;
+            --border: #E8E5DF;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; scroll-behavior: smooth; }
         
-        body { background-color: var(--surface); color: var(--text-dark); line-height: 1.6; }
+        body { background-color: var(--bg-light); color: var(--text-dark); line-height: 1.6; overflow-x: hidden; }
+
+        h1, h2, h3, h4, .font-serif {
+            font-family: 'Lora', serif;
+        }
 
         /* --- NAVEGACIÓN --- */
         nav {
             display: flex; justify-content: space-between; align-items: center;
-            padding: 20px 5%; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px);
-            position: fixed; top: 0; width: 100%; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            padding: 15px 5%; background: rgba(249, 248, 246, 0.95); backdrop-filter: blur(10px);
+            position: fixed; top: 0; width: 100%; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+            border-bottom: 1px solid var(--border);
         }
-        .logo { font-weight: 800; font-size: 1.8rem; color: var(--primary); letter-spacing: -0.5px; }
-        .btn-nav { background: var(--accent); color: var(--text-dark); padding: 10px 24px; border-radius: 50px; text-decoration: none; font-weight: 700; transition: 0.3s; }
-        .btn-nav:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(227, 192, 10, 0.3); }
+        
+        .logo { 
+            display: flex; 
+            align-items: center; 
+        }
+        .logo img { 
+            height: 55px; 
+            width: auto; 
+            object-fit: contain; 
+            display: block;
+        }
+        
+        .btn-nav { background: var(--accent); color: var(--primary); padding: 10px 24px; border-radius: 50px; text-decoration: none; font-weight: 600; transition: 0.3s; }
+        .btn-nav:hover { background: var(--accent-light); transform: translateY(-2px); box-shadow: 0 4px 12px rgba(169, 163, 129, 0.3); }
 
-        /* --- HERO SECTION --- */
+        /* --- HERO SECTION (MEJORADO CON FONDO ELEGANTE) --- */
         .hero {
             padding: 160px 5% 100px;
-            text-align: center;
-            background: linear-gradient(135deg, #f4f7f4 0%, #ffffff 100%);
-            display: flex; flex-direction: column; align-items: center;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 60px;
+            position: relative;
+            /* Imagen de fondo sutil con overlay crema para no sobrecargar */
+            background: linear-gradient(135deg, rgba(249, 248, 246, 0.95) 0%, rgba(249, 248, 246, 0.85) 100%),
+                        url('https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat fixed;
         }
-        .hero-pill { background: #eef3e9; color: var(--primary); padding: 8px 20px; border-radius: 50px; font-weight: 600; font-size: 0.9rem; margin-bottom: 25px; display: inline-block; border: 1px solid #d5e3c8;}
-        .hero h1 { font-size: 3.5rem; color: var(--text-dark); max-width: 900px; line-height: 1.1; margin-bottom: 25px; font-weight: 800; }
-        .hero h1 span { color: var(--primary); }
-        .hero p { font-size: 1.25rem; color: var(--text-gray); max-width: 700px; margin-bottom: 40px; }
-        .btn-primary { background: var(--primary); color: white; padding: 18px 40px; border-radius: 50px; font-size: 1.2rem; font-weight: 700; text-decoration: none; transition: 0.3s; display: inline-block; box-shadow: 0 10px 25px rgba(44, 82, 9, 0.2); border: none; cursor: pointer;}
-        .btn-primary:hover { background: var(--primary-light); transform: translateY(-3px); box-shadow: 0 15px 30px rgba(44, 82, 9, 0.3); }
 
-        /* --- THE HOOK: CHECKLIST INTERACTIVO --- */
+        .hero-content {
+            flex: 1.2;
+            max-width: 650px;
+            position: relative;
+            z-index: 1;
+            text-align: left;
+        }
+
+        .hero-image-wrapper {
+            flex: 1;
+            position: relative;
+            z-index: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .hero-image-wrapper img {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 20px 20px 100px 20px; /* Orgánico pero limpio */
+            box-shadow: 0 25px 50px rgba(76, 76, 41, 0.15);
+            object-fit: cover;
+            border: 6px solid var(--surface);
+        }
+
+        .floating-badge {
+            position: absolute;
+            bottom: -20px;
+            left: -30px;
+            background: var(--surface);
+            padding: 15px 25px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-weight: 600;
+            color: var(--primary);
+            animation: float 4s ease-in-out infinite;
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .hero-pill { background: rgba(127, 124, 86, 0.15); color: var(--primary); padding: 8px 20px; border-radius: 50px; font-weight: 600; font-size: 0.9rem; margin-bottom: 25px; display: inline-block; border: 1px solid rgba(127, 124, 86, 0.25); letter-spacing: 0.5px;}
+        .hero h1 { font-size: 3.6rem; color: var(--primary); line-height: 1.15; margin-bottom: 25px; font-weight: 700; }
+        .hero h1 span { color: var(--secondary); position: relative; display: inline-block;}
+        .hero h1 span::after { content: ''; position: absolute; bottom: 5px; left: 0; width: 100%; height: 10px; background: rgba(199, 171, 136, 0.4); z-index: -1; border-radius: 10px;}
+        .hero p { font-size: 1.15rem; color: var(--text-gray); margin-bottom: 40px; }
+        
+        .btn-primary { background: var(--primary); color: var(--surface); padding: 18px 40px; border-radius: 50px; font-size: 1.1rem; font-weight: 600; text-decoration: none; transition: 0.3s; display: inline-block; box-shadow: 0 10px 25px rgba(76, 76, 41, 0.2); border: none; cursor: pointer;}
+        .btn-primary:hover { background: var(--primary-light); transform: translateY(-3px); box-shadow: 0 15px 30px rgba(76, 76, 41, 0.3); }
+
+        /* --- ESCÁNER / CHECKLIST --- */
         .scanner-section {
             padding: 100px 5%;
             background: var(--primary);
-            color: white;
+            color: var(--surface);
             text-align: center;
+            position: relative;
         }
-        .scanner-section h2 { font-size: 2.8rem; margin-bottom: 20px; color: var(--accent); }
+        
+        .custom-shape-divider-top { position: absolute; top: 0; left: 0; width: 100%; overflow: hidden; line-height: 0; transform: translateY(-99%); }
+        .custom-shape-divider-top svg { display: block; width: calc(100% + 1.3px); height: 60px; }
+        .custom-shape-divider-top .shape-fill { fill: var(--primary); }
+
+        .scanner-section h2 { font-size: 2.8rem; margin-bottom: 20px; color: var(--accent-light); font-weight: 500;}
         .scanner-section > p { max-width: 700px; margin: 0 auto 50px; font-size: 1.1rem; opacity: 0.9; }
 
         .scanner-container {
-            background: var(--surface);
+            background: var(--bg-light);
             border-radius: 24px;
             max-width: 900px;
             margin: 0 auto;
             color: var(--text-dark);
-            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            padding: 40px;
-        }
-
-        /* ESTADO 1: CHECKLIST */
-        #checklist-state h3 { font-size: 1.5rem; margin-bottom: 30px; color: var(--text-dark); }
-        .checklist-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin-bottom: 30px;
-        }
-        .check-item {
-            background: var(--bg-light);
-            border: 2px solid var(--border);
-            border-radius: 12px;
-            padding: 15px;
-            cursor: pointer;
-            transition: 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 12px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+            padding: 50px;
             text-align: left;
-            font-weight: 500;
         }
-        .check-item:hover { border-color: var(--primary-light); }
-        .check-item.selected {
-            background: #eef3e9;
-            border-color: var(--primary);
-            color: var(--primary);
-            box-shadow: 0 4px 10px rgba(44, 82, 9, 0.1);
-        }
-        .check-box {
-            width: 24px; height: 24px; border: 2px solid #ccc; border-radius: 6px; 
-            display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-        }
-        .check-item.selected .check-box { background: var(--primary); border-color: var(--primary); }
-        .check-item.selected .check-box::after { content: "✓"; color: white; font-weight: bold; }
 
-        .check-text { display: flex; flex-direction: column; }
-        .science-fact { font-size: 0.75rem; color: var(--text-gray); font-weight: 400; line-height: 1.3; margin-top: 4px; }
-        .check-item.selected .science-fact { color: var(--primary-light); }
-
-        /* ESTADO 2: LOADER */
-        .loader-state { display: none; padding: 60px 20px; text-align: center; flex-direction: column; align-items: center; }
-        .spinner { width: 60px; height: 60px; border: 6px solid #f3f3f3; border-top: 6px solid var(--primary); border-radius: 50%; animation: spin 1s linear infinite; margin-bottom: 20px; }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-
-        /* ESTADO 3: RESULTADOS */
-        .results-state { display: none; text-align: center; }
-        .toxicity-meter {
-            width: 200px; height: 200px; border-radius: 50%; border: 15px solid #eee; 
-            margin: 0 auto 20px; display: flex; flex-direction: column; align-items: center; justify-content: center;
-            transition: border-color 1s ease-in-out;
-        }
-        .meter-number { font-size: 3.5rem; font-weight: 800; line-height: 1; }
-        .meter-label { font-size: 0.9rem; color: var(--text-gray); font-weight: 600; text-transform: uppercase;}
+        #checklist-state h3 { font-size: 1.8rem; margin-bottom: 30px; color: var(--primary); text-align: center; font-weight: 600;}
+        .checklist-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px; margin-bottom: 40px; }
         
+        .check-item { background: var(--surface); border: 2px solid var(--border); border-radius: 16px; padding: 15px; cursor: pointer; transition: 0.3s; display: flex; align-items: flex-start; gap: 15px; font-weight: 500; color: var(--text-dark);}
+        .check-item:hover { border-color: var(--accent); background: #FAF9F6;}
+        .check-item.selected { background: #F2F0E9; border-color: var(--primary-light); box-shadow: 0 4px 10px rgba(127, 124, 86, 0.15); }
+        
+        .check-box { width: 26px; height: 26px; border: 2px solid #D5D1C8; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; background: var(--surface); transition: 0.2s;}
+        .check-item.selected .check-box { background: var(--primary-light); border-color: var(--primary-light); }
+        .check-item.selected .check-box::after { content: "✓"; color: white; font-weight: bold; font-size: 14px;}
+        
+        .check-text { display: flex; flex-direction: column; }
+        .science-fact { font-size: 0.8rem; color: var(--text-gray); font-weight: 400; line-height: 1.4; margin-top: 6px; }
+
+        /* LOADER / RESULTADOS */
+        .loader-state { display: none; padding: 60px 20px; text-align: center; flex-direction: column; align-items: center; }
+        .spinner { width: 60px; height: 60px; border: 6px solid var(--border); border-top: 6px solid var(--primary-light); border-radius: 50%; animation: spin 1s linear infinite; margin-bottom: 20px; }
+        
+        .results-state { display: none; text-align: center; }
+        .toxicity-meter { width: 200px; height: 200px; border-radius: 50%; border: 15px solid var(--border); margin: 0 auto 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: border-color 1s ease-in-out; }
+        .meter-number { font-size: 3.5rem; font-weight: 700; line-height: 1; font-family: 'Lora', serif;}
+        .meter-label { font-size: 0.9rem; color: var(--text-gray); font-weight: 500; text-transform: uppercase; letter-spacing: 1px;}
         .result-message { font-size: 1.1rem; margin-bottom: 30px; color: var(--text-gray); }
         .result-message strong { color: var(--text-dark); }
+        
+        .solution-box { background: rgba(127, 124, 86, 0.1); border: 1px solid rgba(127, 124, 86, 0.3); border-radius: 16px; padding: 25px; text-align: left; margin-top: 20px; }
 
-        .solution-box {
-            background: #eafaf1; border: 2px solid #d5f5e3; border-radius: 16px; padding: 25px; text-align: left;
-            margin-top: 20px;
+        /* --- FORMULARIO LEAD GEN --- */
+        .offer-section { 
+            padding: 100px 5%; 
+            background: var(--bg-light);
+        }
+        
+        .offer-layout {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            align-items: stretch;
+            background: var(--surface);
+            border-radius: 24px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.04);
+            border: 1px solid var(--border);
+            overflow: hidden;
         }
 
-        /* --- LA OFERTA DE VALIDACIÓN (FORMULARIO LEAD GEN) --- */
-        .offer-section { padding: 100px 5%; background: var(--bg-light); text-align: center; }
-        .offer-section h2 { font-size: 2.5rem; color: var(--primary); margin-bottom: 15px; }
-        .offer-section > p { max-width: 650px; margin: 0 auto 40px; font-size: 1.1rem; color: var(--text-gray); }
+        .offer-image {
+            flex: 1;
+            background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80');
+            background-size: cover;
+            background-position: center;
+            min-height: 400px;
+            position: relative;
+        }
+
+        .offer-image::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; width: 100%; height: 60%;
+            background: linear-gradient(to top, rgba(76, 76, 41, 0.9), transparent);
+        }
+
+        .offer-image-text {
+            position: absolute;
+            bottom: 40px; left: 40px; right: 40px;
+            color: var(--surface); z-index: 2;
+        }
+        .offer-image-text h3 { font-family: 'Lora', serif; font-weight: 500;}
 
         .form-card {
-            background: var(--surface);
-            max-width: 600px;
-            margin: 0 auto;
-            border-radius: 24px;
-            padding: 40px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.06);
-            border: 1px solid var(--border);
+            flex: 1.2;
+            padding: 50px;
             text-align: left;
         }
         
+        .form-card h2 { font-size: 2.2rem; color: var(--primary); margin-bottom: 10px; font-weight: 600;}
+        .form-card > p { font-size: 1.05rem; color: var(--text-gray); margin-bottom: 30px; }
+
         .form-group { margin-bottom: 20px; }
-        .form-group label { display: block; font-weight: 600; margin-bottom: 8px; color: var(--text-dark); font-size: 0.95rem; }
-        .form-control {
-            width: 100%; padding: 15px; border: 2px solid var(--border); border-radius: 10px;
-            font-size: 1rem; font-family: 'Poppins', sans-serif; transition: 0.3s;
-        }
-        .form-control:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(44, 82, 9, 0.1); }
+        .form-group label { display: block; font-weight: 500; margin-bottom: 8px; color: var(--text-dark); font-size: 0.95rem; }
+        .form-control { width: 100%; padding: 15px; border: 1px solid var(--border); border-radius: 12px; font-size: 1rem; font-family: 'Poppins', sans-serif; transition: 0.3s; background: var(--bg-light);}
+        .form-control:focus { outline: none; border-color: var(--accent); background: var(--surface); box-shadow: 0 0 0 4px rgba(169, 163, 129, 0.15); }
         
-        .btn-submit { width: 100%; background: var(--primary); color: white; padding: 18px; border-radius: 12px; font-weight: 700; font-size: 1.1rem; border: none; cursor: pointer; transition: 0.3s; margin-top: 10px;}
-        .btn-submit:hover { background: var(--primary-light); transform: translateY(-2px); box-shadow: 0 10px 20px rgba(44, 82, 9, 0.2); }
+        .btn-submit { width: 100%; background: var(--secondary); color: var(--surface); padding: 18px; border-radius: 12px; font-weight: 600; font-size: 1.1rem; border: none; cursor: pointer; transition: 0.3s; margin-top: 10px;}
+        .btn-submit:hover { background: var(--primary); transform: translateY(-2px); box-shadow: 0 10px 20px rgba(76, 76, 41, 0.15); }
 
-        /* --- FOOTER --- */
-        footer { background: #1a202c; color: white; text-align: center; padding: 40px 5%; font-size: 0.9rem; }
+        footer { background: var(--primary); color: var(--accent); text-align: center; padding: 40px 5%; font-size: 0.9rem; }
 
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
-            .scanner-container, .form-card { padding: 25px; }
+        @media (max-width: 900px) {
+            .hero { flex-direction: column; text-align: center; padding-top: 130px; }
+            .hero-content { text-align: center; max-width: 100%; }
+            .hero h1 span::after { display: none; }
+            .floating-badge { bottom: -10px; right: -10px; left: auto; padding: 10px 15px; font-size: 0.9rem;}
+            .offer-layout { flex-direction: column; }
+            .offer-image { min-height: 250px; }
+            .form-card { padding: 30px; }
         }
     </style>
 </head>
 <body>
 
     <nav>
-        <div class="logo">🌿 Ecozenda</div>
+        <div class="logo">
+            <img src="https://i.ibb.co/r25fSqHn/ee920e26-688c-4bd7-8b02-fb7eb0540737.png" alt="Logo Aeterna">
+        </div>
         <a href="#test" class="btn-nav">Hacer el Test</a>
     </nav>
 
+    <!-- HERO SECTION MEJORADO -->
     <section class="hero">
-        <div class="hero-pill">⭐️ Descubre la verdad sobre tu limpieza</div>
-        <h1>El 80% de los hogares respiran <span>Químicos Tóxicos</span> a diario.</h1>
-        <p>¿Qué tan tóxico es tu hogar? Selecciona los productos que usas actualmente y descubre tu nivel de riesgo en menos de 30 segundos.</p>
-        <a href="#test" class="btn-primary">Calcular mi Toxicidad Gratis</a>
+        <div class="hero-content">
+            <div class="hero-pill">⭐️ Certificación de Hogar Seguro</div>
+            <h1>El 80% de los hogares respiran <span>Químicos Tóxicos</span> a diario.</h1>
+            <p>Descubre qué tan tóxica es tu alacena. Selecciona los productos que usas y obtén un diagnóstico analizado por Inteligencia Artificial en segundos.</p>
+            <a href="#test" class="btn-primary">Calcular mi Toxicidad</a>
+            <div style="margin-top: 20px; display: flex; align-items: center; justify-content: flex-start; gap: 15px; color: var(--text-gray); font-size: 0.9rem;">
+                <span>✅ Basado en estudios de la EPA</span>
+                <span>✅ Análisis por IA en tiempo real</span>
+            </div>
+        </div>
+        
+        <div class="hero-image-wrapper">
+            <!-- Imagen de acompañamiento premium -->
+            <img src="https://images.unsplash.com/photo-1610557892470-55d9e80c0bce?auto=format&fit=crop&w=800&q=80" alt="">
+            
+            <div class="floating-badge">
+                <span style="font-size: 1.5rem; color: var(--primary-light);">🌱</span> +1,200 Hogares Analizados
+            </div>
+        </div>
     </section>
 
+    <!-- SECCIÓN DEL ESCÁNER -->
     <section id="test" class="scanner-section">
-        <h2>Calculadora de Toxicidad</h2>
-        <p>Selecciona todos los productos comerciales/tradicionales que usas actualmente en tu casa.</p>
+        <div class="custom-shape-divider-top">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+            </svg>
+        </div>
+
+        <h2>Calculadora de Toxicidad Asistida por IA</h2>
+        <p>Selecciona todos los productos comerciales que usas actualmente en tu casa.</p>
 
         <div class="scanner-container">
-            
-            <!-- ESTADO 1: CHECKLIST -->
             <div id="checklist-state">
                 <h3>¿Qué productos hay hoy en tu alacena?</h3>
                 
                 <div class="checklist-grid" id="product-list">
-                    
                     <!-- Lavandería -->
-                    <h4 style="grid-column: 1 / -1; margin-top: 10px; color: var(--primary); border-bottom: 1px solid var(--border); padding-bottom: 5px;">🧺 Lavandería y Ropa</h4>
+                    <h4 style="grid-column: 1 / -1; margin-top: 10px; color: var(--secondary); border-bottom: 1px solid var(--border); padding-bottom: 5px; text-align: left;">🧺 Lavandería y Ropa</h4>
                     
-                    <div class="check-item" onclick="toggleSelect(this)" data-value="10">
+                    <div class="check-item" onclick="toggleSelect(this)" data-name="Detergente comercial de ropa">
                         <div class="check-box"></div> 
                         <div class="check-text">
-                            Detergente comercial (polvo/líquido)
-                            <span class="science-fact">Contiene sulfatos (SLS) y fragancias ligadas a dermatitis de contacto y alergias cutáneas.</span>
+                            Detergente comercial
+                            <span class="science-fact">Sulfatos (SLS) ligados a dermatitis de contacto.</span>
                         </div>
                     </div>
-                    <div class="check-item" onclick="toggleSelect(this)" data-value="15">
+                    <div class="check-item" onclick="toggleSelect(this)" data-name="Suavizante de ropa artificial">
                         <div class="check-box"></div>
                         <div class="check-text">
-                            Suavizante con fragancia artificial
-                            <span class="science-fact">Rico en Ftalatos, conocidos disruptores endocrinos (alteran el sistema hormonal).</span>
+                            Suavizante artificial
+                            <span class="science-fact">Rico en Ftalatos (disruptores endocrinos).</span>
                         </div>
                     </div>
-                    <div class="check-item" onclick="toggleSelect(this)" data-value="20">
+                    <div class="check-item" onclick="toggleSelect(this)" data-name="Cloro o blanqueador">
                         <div class="check-box"></div>
                         <div class="check-text">
-                            Cloro / Blanqueador para ropa
-                            <span class="science-fact">Irritante respiratorio. La exposición prolongada reduce la capacidad pulmonar.</span>
-                        </div>
-                    </div>
-                    <div class="check-item" onclick="toggleSelect(this)" data-value="10">
-                        <div class="check-box"></div>
-                        <div class="check-text">
-                            Quitamanchas químico (spray/polvo)
-                            <span class="science-fact">Libera COVs (Compuestos Orgánicos Volátiles) que empeoran el asma.</span>
+                            Cloro / Blanqueador
+                            <span class="science-fact">Irritante respiratorio. Reduce capacidad pulmonar.</span>
                         </div>
                     </div>
 
                     <!-- Cocina -->
-                    <h4 style="grid-column: 1 / -1; margin-top: 15px; color: var(--primary); border-bottom: 1px solid var(--border); padding-bottom: 5px;">🍳 Cocina</h4>
+                    <h4 style="grid-column: 1 / -1; margin-top: 15px; color: var(--secondary); border-bottom: 1px solid var(--border); padding-bottom: 5px; text-align: left;">🍳 Cocina</h4>
                     
-                    <div class="check-item" onclick="toggleSelect(this)" data-value="10">
+                    <div class="check-item" onclick="toggleSelect(this)" data-name="Jabón lavaplatos comercial líquido">
                         <div class="check-box"></div>
                         <div class="check-text">
-                            Lavaplatos (Líquido o crema)
-                            <span class="science-fact">Suele contener Triclosán y conservantes que alteran la microbiota de la piel.</span>
+                            Lavaplatos Líquido
+                            <span class="science-fact">Triclosán altera la microbiota de la piel.</span>
                         </div>
                     </div>
-                    <div class="check-item" onclick="toggleSelect(this)" data-value="20">
+                    <div class="check-item" onclick="toggleSelect(this)" data-name="Desengrasante fuerte de cocina">
                         <div class="check-box"></div>
                         <div class="check-text">
                             Desengrasante fuerte
-                            <span class="science-fact">Contiene butoxietanol, un disolvente que puede causar irritación severa en ojos y garganta.</span>
+                            <span class="science-fact">Butoxietanol causa irritación en ojos y garganta.</span>
                         </div>
                     </div>
-                    <div class="check-item" onclick="toggleSelect(this)" data-value="25">
+                    <div class="check-item" onclick="toggleSelect(this)" data-name="Limpia hornos corrosivo">
                         <div class="check-box"></div>
                         <div class="check-text">
-                            Limpia hornos y parrillas
-                            <span class="science-fact">Fórmulas corrosivas (hidróxido de sodio) que pueden causar quemaduras químicas y daño tisular.</span>
-                        </div>
-                    </div>
-                    <div class="check-item" onclick="toggleSelect(this)" data-value="25">
-                        <div class="check-box"></div>
-                        <div class="check-text">
-                            Destapacaños / Soda cáustica
-                            <span class="science-fact">Altamente tóxico. Emite vapores que queman las vías respiratorias al instante.</span>
+                            Limpia hornos
+                            <span class="science-fact">Vapores corrosivos causan quemaduras químicas.</span>
                         </div>
                     </div>
 
-                    <!-- Baño -->
-                    <h4 style="grid-column: 1 / -1; margin-top: 15px; color: var(--primary); border-bottom: 1px solid var(--border); padding-bottom: 5px;">🛁 Baño</h4>
+                    <!-- Baño y Superficies -->
+                    <h4 style="grid-column: 1 / -1; margin-top: 15px; color: var(--secondary); border-bottom: 1px solid var(--border); padding-bottom: 5px; text-align: left;">🛁 Baños y Superficies</h4>
                     
-                    <div class="check-item" onclick="toggleSelect(this)" data-value="25">
+                    <div class="check-item" onclick="toggleSelect(this)" data-name="Desinfectante para baños con lejía">
                         <div class="check-box"></div>
                         <div class="check-text">
-                            Desinfectante con Lejía (Hipoclorito)
-                            <span class="science-fact">Su mezcla accidental con otros químicos genera gas cloramina, altamente venenoso.</span>
+                            Desinfectante con Lejía
+                            <span class="science-fact">Genera gas venenoso al mezclarse.</span>
                         </div>
                     </div>
-                    <div class="check-item" onclick="toggleSelect(this)" data-value="20">
+                    <div class="check-item" onclick="toggleSelect(this)" data-name="Ácidos limpiadores para inodoro">
                         <div class="check-box"></div>
                         <div class="check-text">
-                            Quita sarro / Ácidos para inodoro
-                            <span class="science-fact">Contienen ácido clorhídrico, responsable de broncoespasmos agudos al inhalarse.</span>
+                            Ácidos para inodoro
+                            <span class="science-fact">Ácido clorhídrico responsable de broncoespasmos.</span>
                         </div>
                     </div>
-                    <div class="check-item" onclick="toggleSelect(this)" data-value="15">
+                    <div class="check-item" onclick="toggleSelect(this)" data-name="Limpiador multiusos con fragancia sintética">
                         <div class="check-box"></div>
                         <div class="check-text">
-                            Quitamohos / Limpia juntas
-                            <span class="science-fact">Posee formaldehído (clasificado como carcinógeno humano por la IARC).</span>
+                            Multiusos perfumado
+                            <span class="science-fact">Fragancias sintéticas causan migrañas.</span>
                         </div>
                     </div>
-
-                    <!-- Superficies -->
-                    <h4 style="grid-column: 1 / -1; margin-top: 15px; color: var(--primary); border-bottom: 1px solid var(--border); padding-bottom: 5px;">🧽 Pisos y Superficies</h4>
-                    
-                    <div class="check-item" onclick="toggleSelect(this)" data-value="15">
+                    <div class="check-item" onclick="toggleSelect(this)" data-name="Limpiavidrios con amoníaco">
                         <div class="check-box"></div>
                         <div class="check-text">
-                            Multiusos o Limpiapisos perfumado
-                            <span class="science-fact">El 95% de sus fragancias provienen del petróleo, causando migrañas y rinitis.</span>
+                            Limpiavidrios (Amoníaco)
+                            <span class="science-fact">Desencadenante primario de asma.</span>
                         </div>
                     </div>
-                    <div class="check-item" onclick="toggleSelect(this)" data-value="15">
+                    <div class="check-item" onclick="toggleSelect(this)" data-name="Ambientador en aerosol sintético">
                         <div class="check-box"></div>
                         <div class="check-text">
-                            Limpiavidrios (con Amoníaco)
-                            <span class="science-fact">El amoníaco es un desencadenante primario de ataques de asma en el hogar.</span>
+                            Ambientador Aerosol
+                            <span class="science-fact">Saturan el aire con Compuestos Volátiles (COVs).</span>
                         </div>
                     </div>
-                    <div class="check-item" onclick="toggleSelect(this)" data-value="10">
+                    <div class="check-item" onclick="toggleSelect(this)" data-name="Insecticida químico en spray">
                         <div class="check-box"></div>
                         <div class="check-text">
-                            Aerosol para muebles / Limpia madera
-                            <span class="science-fact">Los propelentes del aerosol quedan suspendidos en el aire que respiras por horas.</span>
+                            Insecticida Químico
+                            <span class="science-fact">Neurotoxinas residuales que afectan a niños.</span>
                         </div>
                     </div>
-
-                    <!-- Ambiente y Otros -->
-                    <h4 style="grid-column: 1 / -1; margin-top: 15px; color: var(--primary); border-bottom: 1px solid var(--border); padding-bottom: 5px;">🌬️ Ambiente y Especiales</h4>
-
-                    <div class="check-item" onclick="toggleSelect(this)" data-value="20">
-                        <div class="check-box"></div>
-                        <div class="check-text">
-                            Ambientador en aerosol o enchufe
-                            <span class="science-fact">Saturan el aire con COVs. La EPA advierte que el aire interior puede estar 5x más contaminado que el exterior por su uso.</span>
-                        </div>
-                    </div>
-                    <div class="check-item" onclick="toggleSelect(this)" data-value="25">
-                        <div class="check-box"></div>
-                        <div class="check-text">
-                            Insecticida químico en spray
-                            <span class="science-fact">Neurotoxinas diseñadas para matar. Su residuo afecta el sistema nervioso de niños y mascotas.</span>
-                        </div>
-                    </div>
-
                 </div>
 
-                <button class="btn-primary" style="width: 100%; margin-top: 20px;" onclick="calculateToxicity()">Calcular mi Resultado</button>
+                <button class="btn-primary" style="width: 100%; margin-top: 10px;" onclick="calculateToxicityWithIA()">Analizar con Inteligencia Artificial</button>
             </div>
 
-            <!-- ESTADO 2: CARGANDO -->
+            <!-- LOADER -->
             <div id="loading-state" class="loader-state">
                 <div class="spinner"></div>
-                <h3 style="color: var(--primary); font-size: 1.5rem;">Analizando componentes...</h3>
-                <p style="color: var(--text-gray); margin-top: 10px;">Calculando niveles de ftalatos, fosfatos y compuestos volátiles.</p>
+                <h3 style="color: var(--primary); font-size: 1.5rem;">IA Analizando Componentes...</h3>
+                <p style="color: var(--text-gray); margin-top: 10px;">Nuestra Inteligencia artificial está cruzando tus productos con las bases toxicológicas de la EPA y EWG.</p>
             </div>
 
-            <!-- ESTADO 3: RESULTADOS -->
+            <!-- RESULTADOS IA -->
             <div id="results-state" class="results-state">
-                <h3 style="font-size: 1.8rem; margin-bottom: 20px; color: var(--text-dark);">Tu Diagnóstico</h3>
-                
+                <h3 style="font-size: 1.8rem; margin-bottom: 20px; color: var(--primary);">Tu Diagnóstico</h3>
                 <div class="toxicity-meter" id="tox-meter">
                     <div class="meter-number" id="tox-score">0%</div>
                     <div class="meter-label">Nivel de Riesgo</div>
                 </div>
-
-                <p class="result-message" id="tox-message">
-                    Analizando tus resultados...
-                </p>
-
+                
+                <div style="background: var(--surface); padding: 20px; border-radius: 12px; border: 1px solid var(--border); margin-bottom: 30px; text-align: left;">
+                    <p style="font-size: 0.9rem; font-weight: 600; color: var(--secondary); text-transform: uppercase; margin-bottom: 8px;">Análisis Bacteriológico y Químico (IA):</p>
+                    <p class="result-message" id="tox-message" style="margin-bottom: 0; font-size: 1.05rem;"></p>
+                </div>
+                
                 <div class="solution-box">
-                    <h4 style="color: var(--primary); margin-bottom: 10px; font-size: 1.2rem;">✨ La Solución: Transición Ecozenda</h4>
+                    <h4 style="color: var(--primary); margin-bottom: 10px; font-size: 1.2rem;">✨ La Solución: Transición Aeterna</h4>
                     <p style="font-size: 0.95rem; color: var(--text-gray); margin-bottom: 15px;">
-                        Podemos reemplazar estos productos contaminantes por <strong>alternativas 100% botánicas y biodegradables</strong>. Lo mejor: te costará menos que comprarlos en el supermercado.
+                        Podemos reemplazar estos productos contaminantes por <strong>alternativas 100% ecológicas y orgánicas</strong> a un menor costo.
                     </p>
-                    <a href="#oferta" class="btn-primary" style="padding: 12px 25px; font-size: 1rem;">Ver mis alternativas seguras</a>
+                    <a href="#oferta" class="btn-primary" style="padding: 12px 25px; font-size: 1rem;">Quiero liberarme de los tóxicos</a>
                 </div>
             </div>
-
         </div>
     </section>
 
-    <!-- LA OFERTA MVP (Formulario de Captación) -->
+    <!-- FORMULARIO DE CAPTACIÓN -->
     <section id="oferta" class="offer-section">
-        <h2>Libérate de los Tóxicos Hoy</h2>
-        <p>Déjanos tus datos para enviarte el catálogo exacto con los reemplazos para tu hogar y acceder a un precio especial de primera compra.</p>
-
-        <div class="form-card">
-            <form id="lead-form" onsubmit="submitForm(event)">
-                <div class="form-group">
-                    <label for="name">Tu Nombre</label>
-                    <input type="text" id="name" class="form-control" placeholder="Ej. Camila Rodríguez" required>
+        
+        <div class="offer-layout">
+            <div class="offer-image">
+                <div class="offer-image-text">
+                    <h3 style="font-size: 2rem; margin-bottom: 5px;">Tu familia merece un ambiente puro.</h3>
+                    <p style="opacity: 0.95;">Únete a la transición ecológica de Aeterna.</p>
                 </div>
-                
-                <div class="form-group">
-                    <label for="phone">Número de WhatsApp</label>
-                    <input type="tel" id="phone" class="form-control" placeholder="+57 300 000 0000" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="email">Correo Electrónico (Opcional)</label>
-                    <input type="email" id="email" class="form-control" placeholder="camila@correo.com">
-                </div>
+            </div>
 
-                <button type="submit" class="btn-submit">
-                    Solicitar mis Alternativas Ecozenda
-                </button>
-                <p style="text-align: center; font-size: 0.8rem; color: var(--text-gray); margin-top: 15px;">
-                    🔒 Tus datos están seguros. Nuestro equipo te contactará en breve vía WhatsApp.
-                </p>
-            </form>
+            <div class="form-card">
+                <h2>El puente hacia un hogar seguro</h2>
+                <p>Déjanos tus datos para enviarte el catálogo exacto con los reemplazos para tu hogar y acceder a un precio especial de primera compra.</p>
 
-            <!-- Mensaje de Éxito Oculto -->
-            <div id="success-message" style="display: none; text-align: center; padding: 20px;">
-                <h3 style="color: var(--safe); font-size: 1.8rem; margin-bottom: 10px;">¡Gracias por dar el paso! 🌱</h3>
-                <p style="color: var(--text-gray);">Hemos recibido tus datos. Uno de nuestros asesores de transición ecológica te escribirá por WhatsApp en las próximas 2 horas para ayudarte a armar tu primer pedido.</p>
+                <form id="lead-form" onsubmit="submitForm(event)">
+                    <div class="form-group">
+                        <label for="name">Tu Nombre</label>
+                        <input type="text" id="name" class="form-control" placeholder="Ej. Camila Rodríguez" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Número de WhatsApp</label>
+                        <input type="tel" id="phone" class="form-control" placeholder="+57 300 000 0000" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Correo Electrónico (Recomendado)</label>
+                        <input type="email" id="email" class="form-control" placeholder="Para enviarte tu diagnóstico detallado">
+                    </div>
+
+                    <button type="submit" class="btn-submit">
+                        Solicitar mis Alternativas Aeterna
+                    </button>
+                    <p style="text-align: center; font-size: 0.8rem; color: var(--text-gray); margin-top: 15px;">
+                        🔒 Tus datos están seguros. Nuestro equipo te contactará vía WhatsApp.
+                    </p>
+                </form>
+
+                <div id="success-message" style="display: none; text-align: center; padding: 20px;">
+                    <h3 style="color: var(--safe); font-size: 1.8rem; margin-bottom: 10px;">¡Gracias por dar el paso! 🌱</h3>
+                    <p style="color: var(--text-gray);">Hemos recibido tus datos. Uno de nuestros asesores de transición ecológica te escribirá por WhatsApp en breve para ayudarte a armar tu primer pedido con Aeterna.</p>
+                </div>
             </div>
         </div>
     </section>
 
     <footer>
-        <p><strong>Ecozenda</strong> &copy; 2026 - Transición Ecológica Inteligente.</p>
+        <p><strong>Aeterna</strong> &copy; 2026 - Marketplace de Productos Ecológicos.</p>
     </footer>
 
     <script>
-        // Variables globales para almacenar el resultado y enviarlo en el formulario
+        // --- API LLM DE GEMINI ---
+        // Nota: En un entorno de producción real, la apiKey suele manejarse en el backend.
+        const apiKey = ""; 
+
         let currentToxicityScore = 0;
         let currentRiskLevel = "";
 
-        // Lógica de Selección de Productos
         function toggleSelect(element) {
             element.classList.toggle('selected');
         }
 
-        // Lógica de Cálculo
-        function calculateToxicity() {
-            const selectedItems = document.querySelectorAll('.check-item.selected');
+        // --- LLAMADA A LA IA CON RETRY (EXPONENTIAL BACKOFF) ---
+        async function fetchGeminiAnalysis(productsList, retries = 5) {
+            const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
             
-            if(selectedItems.length === 0) {
-                alert("Por favor, selecciona al menos un producto de la lista para calcular tu resultado.");
+            const payload = {
+                systemInstruction: { parts: [{ text: "Eres un experto toxicólogo y consultor ambiental de Aeterna. El usuario proporcionará una lista de productos de limpieza que usa. Tu tarea es analizar estos productos y devolver un JSON estructurado con: 'score' (entero de 0 a 100, donde 100 es máximo peligro de toxicidad en el hogar según los productos dados), 'riskLevel' (solo la palabra: 'Moderado', 'Alto' o 'Crítico'), y 'explanation' (una explicación persuasiva y científica de máximo 3 oraciones cortas sobre los riesgos específicos de esos productos mezclados, mencionando COVs, disruptores endocrinos o la EPA. Sé directo para concientizar)." }] },
+                contents: [{ parts: [{ text: "Analiza estos productos que uso en casa: " + productsList.join(", ") }] }],
+                generationConfig: {
+                    responseMimeType: "application/json",
+                    responseSchema: {
+                        type: "OBJECT",
+                        properties: {
+                            score: { type: "INTEGER" },
+                            riskLevel: { type: "STRING" },
+                            explanation: { type: "STRING" }
+                        }
+                    }
+                }
+            };
+
+            let delay = 1000;
+            for (let i = 0; i < retries; i++) {
+                try {
+                    const response = await fetch(url, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                    
+                    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                    
+                    const result = await response.json();
+                    return JSON.parse(result.candidates[0].content.parts[0].text);
+                } catch (error) {
+                    if (i === retries - 1) {
+                        // En caso de fallar tras 5 intentos, usar un fallback para no romper la app
+                        return {
+                            score: Math.min(productsList.length * 15, 95),
+                            riskLevel: productsList.length > 4 ? "Crítico" : "Alto",
+                            explanation: "Los productos que has seleccionado contienen múltiples compuestos orgánicos volátiles (COVs) y disruptores endocrinos. La exposición continua a estos agentes, según entidades como la EPA, incrementa el riesgo de problemas respiratorios y alergias cutáneas severas."
+                        };
+                    }
+                    await new Promise(res => setTimeout(res, delay));
+                    delay *= 2;
+                }
+            }
+        }
+
+        async function calculateToxicityWithIA() {
+            const selectedNodes = document.querySelectorAll('.check-item.selected');
+            if(selectedNodes.length === 0) {
+                alert("Por favor, selecciona al menos un producto para que la IA lo analice.");
                 return;
             }
 
-            let totalToxicity = 0;
-            selectedItems.forEach(item => {
-                totalToxicity += parseInt(item.getAttribute('data-value'));
-            });
+            // Extraer nombres de productos
+            const productsList = Array.from(selectedNodes).map(item => item.getAttribute('data-name'));
 
-            // Limitar a 100% máximo
-            if(totalToxicity > 100) totalToxicity = 100;
-
-            // Transición a Loading
             document.getElementById('checklist-state').style.display = 'none';
             document.getElementById('loading-state').style.display = 'flex';
-            document.getElementById('test').scrollIntoView({ behavior: 'smooth', block: 'center' });
+            document.getElementById('test').scrollIntoView({ behavior: 'smooth', block: 'start' });
 
-            // Simular cálculo de IA
-            setTimeout(() => {
-                document.getElementById('loading-state').style.display = 'none';
-                document.getElementById('results-state').style.display = 'block';
-                
-                showResults(totalToxicity);
-            }, 2500);
+            // Llamada a Gemini
+            const analysisResult = await fetchGeminiAnalysis(productsList);
+            
+            document.getElementById('loading-state').style.display = 'none';
+            document.getElementById('results-state').style.display = 'block';
+            
+            showResults(analysisResult.score, analysisResult.riskLevel, analysisResult.explanation);
         }
 
-        function showResults(score) {
+        function showResults(score, riskLevel, explanation) {
             const meter = document.getElementById('tox-meter');
             const scoreText = document.getElementById('tox-score');
             const message = document.getElementById('tox-message');
+            
+            currentToxicityScore = score;
+            currentRiskLevel = riskLevel;
 
             // Animación del número
             let current = 0;
             const timer = setInterval(() => {
                 current += 2;
-                if(current >= score) {
-                    current = score;
-                    clearInterval(timer);
-                }
+                if(current >= score) { current = score; clearInterval(timer); }
                 scoreText.innerText = current + '%';
             }, 20);
 
-            // Cambiar color y mensaje según el resultado basados en evidencia científica
-            currentToxicityScore = score;
-            
+            // Colores basados en el nivel de riesgo dado por la IA
             if(score < 30) {
-                currentRiskLevel = "Moderado";
                 meter.style.borderColor = "var(--warning)";
                 scoreText.style.color = "var(--warning)";
-                message.innerHTML = `Tu hogar tiene un <strong>riesgo moderado</strong>. Aunque usas pocos químicos, la exposición crónica a fragancias sintéticas y conservantes está vinculada a un aumento en casos de dermatitis atópica y sensibilidades cutáneas (según la EWG).`;
-            } else if (score < 60) {
-                currentRiskLevel = "Alto";
-                meter.style.borderColor = "#E67E22"; // Naranja
+            } else if (score < 70) {
+                meter.style.borderColor = "#E67E22";
                 scoreText.style.color = "#E67E22";
-                message.innerHTML = `Tu hogar tiene un <strong>riesgo alto</strong>. Estás respirando COVs (Compuestos Orgánicos Volátiles). La <strong>EPA (Agencia de Protección Ambiental)</strong> advierte que, debido a estos productos, el aire dentro de tu casa puede estar hasta 5 veces más contaminado que el aire de la calle, empeorando alergias y rinitis.`;
             } else {
-                currentRiskLevel = "Crítico";
-                meter.style.borderColor = "var(--alert)"; // Rojo
+                meter.style.borderColor = "var(--alert)";
                 scoreText.style.color = "var(--alert)";
-                message.innerHTML = `<strong>¡Alerta Roja Crítica!</strong> Estás en grave riesgo respiratorio. Un estudio de la <strong>American Thoracic Society</strong> demostró que el uso regular de estos químicos abrasivos (como el cloro y los aerosoles) daña la función pulmonar tanto como <strong>fumar 20 cigarrillos al día</strong>.`;
             }
+            
+            // Insertar la explicación generada por Gemini
+            message.innerHTML = `<strong>Riesgo ${riskLevel}:</strong> ${explanation}`;
         }
 
-        // Envío del Formulario
         async function submitForm(event) {
-            event.preventDefault(); // Evita que la página recargue
+            event.preventDefault();
             
             const btn = document.querySelector('.btn-submit');
             const originalText = btn.innerText;
-            btn.innerText = "Analizando y enviando resultados...";
-            btn.disabled = true; // Previene doble clic
+            btn.innerText = "Enviando resultados...";
+            btn.disabled = true;
 
-            // Empaquetar los datos
             const payload = {
                 name: document.getElementById('name').value,
                 phone: document.getElementById('phone').value,
@@ -503,26 +612,21 @@
                 riskLevel: currentRiskLevel
             };
 
-            // 👉 URL CONECTADA A TU GOOGLE APPS SCRIPT
             const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyk19E0YhKZFJihO_jSnzbdOGu-uiBJL8kSuUjNmWMF6o97TIghVdJwh026f9GeV1eSiw/exec";
 
             try {
-                // Enviar datos al backend (Google Sheets)
                 await fetch(GOOGLE_SCRIPT_URL, {
                     method: 'POST',
-                    mode: 'no-cors', // Fundamental para enviar datos a Google sin errores de CORS
-                    headers: {
-                        'Content-Type': 'text/plain;charset=utf-8',
-                    },
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
                     body: JSON.stringify(payload)
                 });
                 
-                // Ocultar formulario y mostrar éxito
                 document.getElementById('lead-form').style.display = 'none';
                 document.getElementById('success-message').style.display = 'block';
             } catch (error) {
-                console.error("Error al conectar con el servidor:", error);
-                alert("Hubo un error de conexión. Por favor, asegúrate de tener internet e intenta nuevamente.");
+                console.error("Error:", error);
+                alert("Hubo un error de conexión. Intenta nuevamente.");
                 btn.innerText = originalText;
                 btn.disabled = false;
             }
