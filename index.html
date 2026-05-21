@@ -181,111 +181,243 @@
                     <p class="font-body-md text-body-md text-on-surface-variant">Selecciona los productos comerciales o tradicionales que utilizas actualmente en tu hogar para analizar su impacto.</p>
                 </div>
                 
-                <div id="checklist-state" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <!-- Producto 1 -->
-                    <div class="check-item bg-surface rounded-DEFAULT p-6 border border-outline-variant flex flex-col justify-between cursor-pointer" onclick="toggleSelect(this)" data-name="Detergente de ropa comercial con sulfatos">
-                        <div class="flex justify-between items-start mb-4">
-                            <span class="material-symbols-outlined text-primary text-3xl" style="font-variation-settings: 'wght' 200;">local_laundry_service</span>
-                            <div class="check-box w-6 h-6 border border-outline rounded-sm transition-colors"></div>
-                        </div>
-                        <div>
-                            <h3 class="font-headline-lg-mobile text-[20px] text-on-surface mb-1">Detergente Comercial</h3>
-                            <p class="font-body-md text-sm text-on-surface-variant">Frecuentemente con Sulfatos (SLS) ligados a dermatitis.</p>
-                        </div>
-                    </div>
-
-                    <!-- Producto 2 -->
-                    <div class="check-item bg-surface rounded-DEFAULT p-6 border border-outline-variant flex flex-col justify-between cursor-pointer" onclick="toggleSelect(this)" data-name="Suavizante de ropa con fragancias sintéticas">
-                        <div class="flex justify-between items-start mb-4">
-                            <span class="material-symbols-outlined text-primary text-3xl" style="font-variation-settings: 'wght' 200;">checkroom</span>
-                            <div class="check-box w-6 h-6 border border-outline rounded-sm transition-colors"></div>
-                        </div>
-                        <div>
-                            <h3 class="font-headline-lg-mobile text-[20px] text-on-surface mb-1">Suavizante Artificial</h3>
-                            <p class="font-body-md text-sm text-on-surface-variant">Rico en Ftalatos y disruptores endocrinos ocultos.</p>
-                        </div>
-                    </div>
-
-                    <!-- Producto 3 -->
-                    <div class="check-item bg-surface rounded-DEFAULT p-6 border border-outline-variant flex flex-col justify-between cursor-pointer" onclick="toggleSelect(this)" data-name="Cloro o blanqueador">
-                        <div class="flex justify-between items-start mb-4">
-                            <span class="material-symbols-outlined text-primary text-3xl" style="font-variation-settings: 'wght' 200;">water_drop</span>
-                            <div class="check-box w-6 h-6 border border-outline rounded-sm transition-colors"></div>
-                        </div>
-                        <div>
-                            <h3 class="font-headline-lg-mobile text-[20px] text-on-surface mb-1">Cloro / Blanqueador</h3>
-                            <p class="font-body-md text-sm text-on-surface-variant">Irritante respiratorio severo en espacios cerrados.</p>
-                        </div>
-                    </div>
-
-                    <!-- Producto 4 -->
-                    <div class="check-item bg-surface rounded-DEFAULT p-6 border border-outline-variant flex flex-col justify-between cursor-pointer" onclick="toggleSelect(this)" data-name="Lavaplatos comercial líquido con triclosán">
-                        <div class="flex justify-between items-start mb-4">
-                            <span class="material-symbols-outlined text-secondary text-3xl" style="font-variation-settings: 'wght' 200;">kitchen</span>
-                            <div class="check-box w-6 h-6 border border-outline rounded-sm transition-colors"></div>
-                        </div>
-                        <div>
-                            <h3 class="font-headline-lg-mobile text-[20px] text-on-surface mb-1">Lavaplatos Líquido</h3>
-                            <p class="font-body-md text-sm text-on-surface-variant">Suele contener químicos que alteran la microbiota.</p>
-                        </div>
-                    </div>
-
-                    <!-- Producto 5 -->
-                    <div class="check-item bg-surface rounded-DEFAULT p-6 border border-outline-variant flex flex-col justify-between cursor-pointer" onclick="toggleSelect(this)" data-name="Desengrasante fuerte o limpia hornos">
-                        <div class="flex justify-between items-start mb-4">
-                            <span class="material-symbols-outlined text-secondary text-3xl" style="font-variation-settings: 'wght' 200;">microwave</span>
-                            <div class="check-box w-6 h-6 border border-outline rounded-sm transition-colors"></div>
-                        </div>
-                        <div>
-                            <h3 class="font-headline-lg-mobile text-[20px] text-on-surface mb-1">Desengrasante Fuerte</h3>
-                            <p class="font-body-md text-sm text-on-surface-variant">Vapores corrosivos y butoxietanol que irritan ojos.</p>
+                <div id="checklist-state" class="flex flex-col gap-12">
+                    
+                    <!-- CATEGORÍA 1: LAVANDERÍA Y TEXTILES -->
+                    <div class="flex flex-col gap-6">
+                        <h3 class="font-headline-lg text-[24px] text-primary border-b border-outline-variant pb-2 flex items-center gap-2">
+                            <span class="material-symbols-outlined">local_laundry_service</span> Lavandería y Cuidado Textil
+                        </h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            <div class="check-item bg-surface rounded-DEFAULT p-6 border border-outline-variant flex flex-col justify-between cursor-pointer" onclick="toggleSelect(this)" data-name="Detergente de ropa comercial con sulfatos">
+                                <div class="flex justify-between items-start mb-4">
+                                    <span class="material-symbols-outlined text-primary text-3xl" style="font-variation-settings: 'wght' 200;">water_drop</span>
+                                    <div class="check-box w-6 h-6 border border-outline rounded-sm transition-colors"></div>
+                                </div>
+                                <div>
+                                    <h4 class="font-headline-lg-mobile text-[18px] text-on-surface mb-1">Detergente Comercial</h4>
+                                    <p class="font-body-md text-sm text-on-surface-variant">Frecuentemente con Sulfatos (SLS) ligados a dermatitis.</p>
+                                </div>
+                            </div>
+                            <div class="check-item bg-surface rounded-DEFAULT p-6 border border-outline-variant flex flex-col justify-between cursor-pointer" onclick="toggleSelect(this)" data-name="Suavizante de ropa con fragancias sintéticas">
+                                <div class="flex justify-between items-start mb-4">
+                                    <span class="material-symbols-outlined text-primary text-3xl" style="font-variation-settings: 'wght' 200;">checkroom</span>
+                                    <div class="check-box w-6 h-6 border border-outline rounded-sm transition-colors"></div>
+                                </div>
+                                <div>
+                                    <h4 class="font-headline-lg-mobile text-[18px] text-on-surface mb-1">Suavizante Artificial</h4>
+                                    <p class="font-body-md text-sm text-on-surface-variant">Rico en Ftalatos y disruptores endocrinos ocultos.</p>
+                                </div>
+                            </div>
+                            <div class="check-item bg-surface rounded-DEFAULT p-6 border border-outline-variant flex flex-col justify-between cursor-pointer" onclick="toggleSelect(this)" data-name="Quitamanchas químico para ropa">
+                                <div class="flex justify-between items-start mb-4">
+                                    <span class="material-symbols-outlined text-primary text-3xl" style="font-variation-settings: 'wght' 200;">wash</span>
+                                    <div class="check-box w-6 h-6 border border-outline rounded-sm transition-colors"></div>
+                                </div>
+                                <div>
+                                    <h4 class="font-headline-lg-mobile text-[18px] text-on-surface mb-1">Quitamanchas Químico</h4>
+                                    <p class="font-body-md text-sm text-on-surface-variant">Peróxidos fuertes ligados a alergias cutáneas.</p>
+                                </div>
+                            </div>
+                            <div class="check-item bg-surface rounded-DEFAULT p-6 border border-outline-variant flex flex-col justify-between cursor-pointer" onclick="toggleSelect(this)" data-name="Cloro o blanqueador">
+                                <div class="flex justify-between items-start mb-4">
+                                    <span class="material-symbols-outlined text-primary text-3xl" style="font-variation-settings: 'wght' 200;">opacity</span>
+                                    <div class="check-box w-6 h-6 border border-outline rounded-sm transition-colors"></div>
+                                </div>
+                                <div>
+                                    <h4 class="font-headline-lg-mobile text-[18px] text-on-surface mb-1">Cloro / Blanqueador</h4>
+                                    <p class="font-body-md text-sm text-on-surface-variant">Irritante respiratorio severo en espacios cerrados.</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Producto 6 -->
-                    <div class="check-item bg-surface rounded-DEFAULT p-6 border border-outline-variant flex flex-col justify-between cursor-pointer" onclick="toggleSelect(this)" data-name="Desinfectante de baño con lejía">
-                        <div class="flex justify-between items-start mb-4">
-                            <span class="material-symbols-outlined text-tertiary text-3xl" style="font-variation-settings: 'wght' 200;">bathroom</span>
-                            <div class="check-box w-6 h-6 border border-outline rounded-sm transition-colors"></div>
-                        </div>
-                        <div>
-                            <h3 class="font-headline-lg-mobile text-[20px] text-on-surface mb-1">Desinfectante con Lejía</h3>
-                            <p class="font-body-md text-sm text-on-surface-variant">Riesgo de generar gas tóxico al mezclarse.</p>
+                    <!-- CATEGORÍA 2: COCINA Y ALIMENTOS -->
+                    <div class="flex flex-col gap-6">
+                        <h3 class="font-headline-lg text-[24px] text-secondary border-b border-outline-variant pb-2 flex items-center gap-2">
+                            <span class="material-symbols-outlined">restaurant</span> Cocina y Alimentos
+                        </h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            <div class="check-item bg-surface rounded-DEFAULT p-6 border border-outline-variant flex flex-col justify-between cursor-pointer" onclick="toggleSelect(this)" data-name="Lavaplatos comercial líquido con triclosán">
+                                <div class="flex justify-between items-start mb-4">
+                                    <span class="material-symbols-outlined text-secondary text-3xl" style="font-variation-settings: 'wght' 200;">kitchen</span>
+                                    <div class="check-box w-6 h-6 border border-outline rounded-sm transition-colors"></div>
+                                </div>
+                                <div>
+                                    <h4 class="font-headline-lg-mobile text-[18px] text-on-surface mb-1">Lavaplatos Líquido</h4>
+                                    <p class="font-body-md text-sm text-on-surface-variant">Suele contener químicos que alteran la microbiota.</p>
+                                </div>
+                            </div>
+                            <div class="check-item bg-surface rounded-DEFAULT p-6 border border-outline-variant flex flex-col justify-between cursor-pointer" onclick="toggleSelect(this)" data-name="Desengrasante fuerte o limpia hornos">
+                                <div class="flex justify-between items-start mb-4">
+                                    <span class="material-symbols-outlined text-secondary text-3xl" style="font-variation-settings: 'wght' 200;">microwave</span>
+                                    <div class="check-box w-6 h-6 border border-outline rounded-sm transition-colors"></div>
+                                </div>
+                                <div>
+                                    <h4 class="font-headline-lg-mobile text-[18px] text-on-surface mb-1">Desengrasante Fuerte</h4>
+                                    <p class="font-body-md text-sm text-on-surface-variant">Vapores corrosivos y sosa cáustica que irritan los ojos.</p>
+                                </div>
+                            </div>
+                            <div class="check-item bg-surface rounded-DEFAULT p-6 border border-outline-variant flex flex-col justify-between cursor-pointer" onclick="toggleSelect(this)" data-name="Limpiador de acero inoxidable comercial">
+                                <div class="flex justify-between items-start mb-4">
+                                    <span class="material-symbols-outlined text-secondary text-3xl" style="font-variation-settings: 'wght' 200;">countertops</span>
+                                    <div class="check-box w-6 h-6 border border-outline rounded-sm transition-colors"></div>
+                                </div>
+                                <div>
+                                    <h4 class="font-headline-lg-mobile text-[18px] text-on-surface mb-1">Limpia Acero Inoxidable</h4>
+                                    <p class="font-body-md text-sm text-on-surface-variant">Contiene destilados de petróleo inflamables.</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Producto 7 -->
-                    <div class="check-item bg-surface rounded-DEFAULT p-6 border border-outline-variant flex flex-col justify-between cursor-pointer" onclick="toggleSelect(this)" data-name="Limpiavidrios con amoníaco">
-                        <div class="flex justify-between items-start mb-4">
-                            <span class="material-symbols-outlined text-tertiary text-3xl" style="font-variation-settings: 'wght' 200;">window</span>
-                            <div class="check-box w-6 h-6 border border-outline rounded-sm transition-colors"></div>
-                        </div>
-                        <div>
-                            <h3 class="font-headline-lg-mobile text-[20px] text-on-surface mb-1">Limpiavidrios (Amoníaco)</h3>
-                            <p class="font-body-md text-sm text-on-surface-variant">Desencadenante primario de ataques de asma.</p>
+                    <!-- CATEGORÍA 3: BAÑOS Y TUBERÍAS -->
+                    <div class="flex flex-col gap-6">
+                        <h3 class="font-headline-lg text-[24px] text-tertiary border-b border-outline-variant pb-2 flex items-center gap-2">
+                            <span class="material-symbols-outlined">bathroom</span> Baños y Tuberías
+                        </h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            <div class="check-item bg-surface rounded-DEFAULT p-6 border border-outline-variant flex flex-col justify-between cursor-pointer" onclick="toggleSelect(this)" data-name="Desinfectante de baño con lejía">
+                                <div class="flex justify-between items-start mb-4">
+                                    <span class="material-symbols-outlined text-tertiary text-3xl" style="font-variation-settings: 'wght' 200;">cleaning_services</span>
+                                    <div class="check-box w-6 h-6 border border-outline rounded-sm transition-colors"></div>
+                                </div>
+                                <div>
+                                    <h4 class="font-headline-lg-mobile text-[18px] text-on-surface mb-1">Desinfectante con Lejía</h4>
+                                    <p class="font-body-md text-sm text-on-surface-variant">Riesgo de generar gas tóxico al mezclarse.</p>
+                                </div>
+                            </div>
+                            <div class="check-item bg-surface rounded-DEFAULT p-6 border border-outline-variant flex flex-col justify-between cursor-pointer" onclick="toggleSelect(this)" data-name="Pastillas desodorantes para inodoro">
+                                <div class="flex justify-between items-start mb-4">
+                                    <span class="material-symbols-outlined text-tertiary text-3xl" style="font-variation-settings: 'wght' 200;">sanitizer</span>
+                                    <div class="check-box w-6 h-6 border border-outline rounded-sm transition-colors"></div>
+                                </div>
+                                <div>
+                                    <h4 class="font-headline-lg-mobile text-[18px] text-on-surface mb-1">Pastillas para Inodoro</h4>
+                                    <p class="font-body-md text-sm text-on-surface-variant">Emiten diclorobenceno de forma constante al ambiente.</p>
+                                </div>
+                            </div>
+                            <div class="check-item bg-surface rounded-DEFAULT p-6 border border-outline-variant flex flex-col justify-between cursor-pointer" onclick="toggleSelect(this)" data-name="Destapacaños químico líquido">
+                                <div class="flex justify-between items-start mb-4">
+                                    <span class="material-symbols-outlined text-tertiary text-3xl" style="font-variation-settings: 'wght' 200;">plumbing</span>
+                                    <div class="check-box w-6 h-6 border border-outline rounded-sm transition-colors"></div>
+                                </div>
+                                <div>
+                                    <h4 class="font-headline-lg-mobile text-[18px] text-on-surface mb-1">Destapacaños Químico</h4>
+                                    <p class="font-body-md text-sm text-on-surface-variant">Sosa cáustica peligrosa al inhalar en espacios pequeños.</p>
+                                </div>
+                            </div>
+                            <div class="check-item bg-surface rounded-DEFAULT p-6 border border-outline-variant flex flex-col justify-between cursor-pointer" onclick="toggleSelect(this)" data-name="Limpiador comercial de moho y hongos">
+                                <div class="flex justify-between items-start mb-4">
+                                    <span class="material-symbols-outlined text-tertiary text-3xl" style="font-variation-settings: 'wght' 200;">shower</span>
+                                    <div class="check-box w-6 h-6 border border-outline rounded-sm transition-colors"></div>
+                                </div>
+                                <div>
+                                    <h4 class="font-headline-lg-mobile text-[18px] text-on-surface mb-1">Antimoho / Antihongos</h4>
+                                    <p class="font-body-md text-sm text-on-surface-variant">Fungicidas tóxicos que pueden irritar severamente las vías respiratorias.</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Producto 8 -->
-                    <div class="check-item bg-surface rounded-DEFAULT p-6 border border-outline-variant flex flex-col justify-between cursor-pointer" onclick="toggleSelect(this)" data-name="Ambientador en aerosol sintético">
-                        <div class="flex justify-between items-start mb-4">
-                            <span class="material-symbols-outlined text-tertiary-container text-3xl" style="font-variation-settings: 'wght' 200;">air</span>
-                            <div class="check-box w-6 h-6 border border-outline rounded-sm transition-colors"></div>
+                    <!-- CATEGORÍA 4: SUPERFICIES GENERALES -->
+                    <div class="flex flex-col gap-6">
+                        <h3 class="font-headline-lg text-[24px] text-tertiary-container border-b border-outline-variant pb-2 flex items-center gap-2">
+                            <span class="material-symbols-outlined">layers</span> Limpieza General y Superficies
+                        </h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            <div class="check-item bg-surface rounded-DEFAULT p-6 border border-outline-variant flex flex-col justify-between cursor-pointer" onclick="toggleSelect(this)" data-name="Limpiador multiusos con amonio cuaternario">
+                                <div class="flex justify-between items-start mb-4">
+                                    <span class="material-symbols-outlined text-tertiary-container text-3xl" style="font-variation-settings: 'wght' 200;">spray</span>
+                                    <div class="check-box w-6 h-6 border border-outline rounded-sm transition-colors"></div>
+                                </div>
+                                <div>
+                                    <h4 class="font-headline-lg-mobile text-[18px] text-on-surface mb-1">Multiusos Comercial</h4>
+                                    <p class="font-body-md text-sm text-on-surface-variant">Amonio cuaternario que contribuye a problemas respiratorios crónicos.</p>
+                                </div>
+                            </div>
+                            <div class="check-item bg-surface rounded-DEFAULT p-6 border border-outline-variant flex flex-col justify-between cursor-pointer" onclick="toggleSelect(this)" data-name="Limpiavidrios con amoníaco">
+                                <div class="flex justify-between items-start mb-4">
+                                    <span class="material-symbols-outlined text-tertiary-container text-3xl" style="font-variation-settings: 'wght' 200;">window</span>
+                                    <div class="check-box w-6 h-6 border border-outline rounded-sm transition-colors"></div>
+                                </div>
+                                <div>
+                                    <h4 class="font-headline-lg-mobile text-[18px] text-on-surface mb-1">Limpiavidrios (Amoníaco)</h4>
+                                    <p class="font-body-md text-sm text-on-surface-variant">Desencadenante primario de ataques de asma.</p>
+                                </div>
+                            </div>
+                            <div class="check-item bg-surface rounded-DEFAULT p-6 border border-outline-variant flex flex-col justify-between cursor-pointer" onclick="toggleSelect(this)" data-name="Limpiador de pisos perfumado">
+                                <div class="flex justify-between items-start mb-4">
+                                    <span class="material-symbols-outlined text-tertiary-container text-3xl" style="font-variation-settings: 'wght' 200;">imagesmode</span>
+                                    <div class="check-box w-6 h-6 border border-outline rounded-sm transition-colors"></div>
+                                </div>
+                                <div>
+                                    <h4 class="font-headline-lg-mobile text-[18px] text-on-surface mb-1">Limpiador de Pisos</h4>
+                                    <p class="font-body-md text-sm text-on-surface-variant">Conservantes químicos que pueden irritar la piel y patas de mascotas.</p>
+                                </div>
+                            </div>
+                            <div class="check-item bg-surface rounded-DEFAULT p-6 border border-outline-variant flex flex-col justify-between cursor-pointer" onclick="toggleSelect(this)" data-name="Pulidor de muebles de madera en aerosol">
+                                <div class="flex justify-between items-start mb-4">
+                                    <span class="material-symbols-outlined text-tertiary-container text-3xl" style="font-variation-settings: 'wght' 200;">chair</span>
+                                    <div class="check-box w-6 h-6 border border-outline rounded-sm transition-colors"></div>
+                                </div>
+                                <div>
+                                    <h4 class="font-headline-lg-mobile text-[18px] text-on-surface mb-1">Pulidor de Muebles</h4>
+                                    <p class="font-body-md text-sm text-on-surface-variant">Contiene destilados de petróleo y aerosoles inflamables.</p>
+                                </div>
+                            </div>
                         </div>
-                        <div>
-                            <h3 class="font-headline-lg-mobile text-[20px] text-on-surface mb-1">Ambientador Aerosol</h3>
-                            <p class="font-body-md text-sm text-on-surface-variant">Saturan el aire con Compuestos Volátiles (COVs).</p>
+                    </div>
+
+                    <!-- CATEGORÍA 5: AMBIENTE Y PLAGAS -->
+                    <div class="flex flex-col gap-6">
+                        <h3 class="font-headline-lg text-[24px] text-error border-b border-outline-variant pb-2 flex items-center gap-2">
+                            <span class="material-symbols-outlined">air</span> Ambiente y Control de Plagas
+                        </h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            <div class="check-item bg-surface rounded-DEFAULT p-6 border border-outline-variant flex flex-col justify-between cursor-pointer" onclick="toggleSelect(this)" data-name="Ambientador en aerosol sintético">
+                                <div class="flex justify-between items-start mb-4">
+                                    <span class="material-symbols-outlined text-error text-3xl" style="font-variation-settings: 'wght' 200;">air_freshener</span>
+                                    <div class="check-box w-6 h-6 border border-outline rounded-sm transition-colors"></div>
+                                </div>
+                                <div>
+                                    <h4 class="font-headline-lg-mobile text-[18px] text-on-surface mb-1">Ambientador Aerosol</h4>
+                                    <p class="font-body-md text-sm text-on-surface-variant">Saturan el aire con Compuestos Volátiles (COVs).</p>
+                                </div>
+                            </div>
+                            <div class="check-item bg-surface rounded-DEFAULT p-6 border border-outline-variant flex flex-col justify-between cursor-pointer" onclick="toggleSelect(this)" data-name="Insecticida en aerosol doméstico">
+                                <div class="flex justify-between items-start mb-4">
+                                    <span class="material-symbols-outlined text-error text-3xl" style="font-variation-settings: 'wght' 200;">pest_control</span>
+                                    <div class="check-box w-6 h-6 border border-outline rounded-sm transition-colors"></div>
+                                </div>
+                                <div>
+                                    <h4 class="font-headline-lg-mobile text-[18px] text-on-surface mb-1">Insecticida Doméstico</h4>
+                                    <p class="font-body-md text-sm text-on-surface-variant">Neurotoxinas y repelentes que persisten en el aire del hogar.</p>
+                                </div>
+                            </div>
+                            <div class="check-item bg-surface rounded-DEFAULT p-6 border border-outline-variant flex flex-col justify-between cursor-pointer" onclick="toggleSelect(this)" data-name="Velas aromáticas comerciales (parafina)">
+                                <div class="flex justify-between items-start mb-4">
+                                    <span class="material-symbols-outlined text-error text-3xl" style="font-variation-settings: 'wght' 200;">candle</span>
+                                    <div class="check-box w-6 h-6 border border-outline rounded-sm transition-colors"></div>
+                                </div>
+                                <div>
+                                    <h4 class="font-headline-lg-mobile text-[18px] text-on-surface mb-1">Velas Aromáticas (Parafina)</h4>
+                                    <p class="font-body-md text-sm text-on-surface-variant">La combustión libera químicos similares a los del escape de un auto.</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
                     <!-- Botón de Análisis -->
-                    <div class="col-span-1 md:col-span-2 lg:col-span-1 bg-surface-container rounded-DEFAULT p-6 flex flex-col items-center justify-center text-center gap-4 border border-outline-variant">
+                    <div class="mt-8 bg-surface-container rounded-DEFAULT p-8 flex flex-col items-center justify-center text-center gap-4 border border-outline-variant">
                         <span class="material-symbols-outlined text-primary text-4xl" style="font-variation-settings: 'wght' 200;">analytics</span>
-                        <h3 class="font-headline-lg-mobile text-[20px] text-on-surface">Procesar Datos</h3>
-                        <button onclick="calculateToxicityWithIA()" class="bg-primary text-on-primary font-label-sm text-label-sm px-8 py-3 rounded-DEFAULT hover:bg-primary/90 transition-colors w-full">
-                            Analizar con Inteligencia Artificial
+                        <h3 class="font-headline-lg-mobile text-[24px] text-on-surface">Procesar Datos de mi Hogar</h3>
+                        <p class="font-body-md text-on-surface-variant max-w-lg mb-2">Una vez seleccionados tus productos habituales, nuestra IA revelará el nivel de toxicidad oculta en tus espacios.</p>
+                        <button onclick="calculateToxicityWithIA()" class="bg-primary text-on-primary font-label-sm text-label-sm px-10 py-4 rounded-DEFAULT hover:bg-primary/90 transition-colors w-full md:w-auto shadow-md">
+                            Iniciar Análisis con Inteligencia Artificial
                         </button>
                     </div>
+
                 </div>
 
                 <!-- Estado de Carga -->
@@ -617,3 +749,4 @@
     </script>
 </body>
 </html>
+ 
