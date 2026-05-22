@@ -1,369 +1,957 @@
-<!DOCTYPE html><html lang="es" style=""><head>
-<meta charset="utf-8">
-<meta content="width=device-width, initial-scale=1.0" name="viewport">
-<title>Aeterna - El puente hacia un hogar consciente</title>
-<!-- Tailwind CSS CDN with Plugins -->
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<!-- Google Fonts: Noto Serif and Manrope -->
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"><script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            surface: '#fff9e7',
-            'surface-dim': '#e2dbb6',
-            'surface-bright': '#fff9e7',
-            primary: '#765530',
-            'primary-dark': '#5a4125',
-          },
-          fontFamily: {
-            serif: ['Noto Serif', 'serif'],
-            sans: ['Manrope', 'sans-serif'],
-          },
-          borderRadius: {
-            'custom': '4px',
-          }
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Aeterna - Hogar Consciente</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        surface: '#fff9e7',
+                        'surface-dim': '#e2dbb6',
+                        'surface-bright': '#fff9e7',
+                        'surface-container-low': '#fcf4ce',
+                        'surface-container-lowest': '#ffffff',
+                        primary: '#765530',
+                        'primary-dark': '#5a4125',
+                        error: '#ba1a1a',
+                        'on-surface-variant': '#4f453b',
+                        'outline-variant': '#d3c4b7'
+                    },
+                    fontFamily: {
+                        serif: ['Noto Serif', 'serif'],
+                        sans: ['Manrope', 'sans-serif'],
+                    },
+                    borderRadius: {
+                        'custom': '8px',
+                    }
+                }
+            }
         }
-      }
-    }
-  </script>
-<style data-purpose="custom-styles">
-    body {
-      background-color: #fff9e7;
-      color: #333;
-      scroll-behavior: smooth;
-    }
-    .product-card {
-      transition: all 0.2s ease;
-      cursor: pointer;
-    }
-    .product-card:hover {
-      border-color: #765530;
-      background-color: #ffffff;
-    }
-    .product-card.selected {
-      border-color: #765530;
-      background-color: #fcf4ce;
-      box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
-    }
-    .checkbox-custom:checked {
-      background-color: #765530;
-      border-color: #765530;
-    }
-    /* Hide scrollbar but keep functionality */
-    .no-scrollbar::-webkit-scrollbar {
-      display: none;
-    }
-  </style>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"></head>
-<body class="font-sans">
-<!-- BEGIN: MainHeader -->
-<header class="sticky top-0 z-50 bg-surface/90 backdrop-blur-md border-b border-surface-dim">
-<div class="max-w-7xl mx-auto px-4 flex justify-between items-center h-full"><div class="font-headline-md text-headline-md text-primary font-bold tracking-tight text-2xl"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKPlRpLAQPB4ZdBEW7m1Q7z9LdqFZFgy0aclQsJib9CTFuWnL428R-OzdvxMzTuPFoTI0DiI5psZFL5pJfh1VqMazvR_z9NUE2CVQI6nGAroC-lLvT01qGXwNi4VMtpsRuPUlphm8o7ihj0zU2rbB_kxAeNf8DiMRnalXoILHBq53aQLptjgkalDMFdwfKnEhMjI1j4FSvUh3EwOoPlaO3jpVnU-hGqBQH4b8zh3m9VlP_1s5ipFh628D7l_cFDYNje9GLwaRYm2Gu" alt="Aeterna" class="w-auto object-contain h-24"></div><nav class="hidden md:flex items-center space-x-8"><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#calculadora" title="Inicia tu evaluación de toxicidad en el hogar">Inicio</a><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#products-catalog" title="Explora alternativas seguras y ecológicas">Catálogo</a><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#" title="Ponte en contacto con nosotros">Contactanos</a></nav><div class="flex items-center space-x-4"><a class="material-symbols-outlined text-primary p-2 hover:bg-primary/5 rounded-full transition-colors" data-icon="shopping_bag" href="{{DATA:SCREEN:SCREEN_40}}" title="Ver tu carrito y finalizar compra">shopping_cart</a><a class="text-white px-6 py-2.5 font-label-md text-label-md rounded-full hover:bg-primary transition-all duration-300 shadow-sm bg-primary" href="#calculadora" title="Comienza el diagnóstico inteligente de tu hogar ahora">Iniciar Diagnóstico</a></div></div>
-</header>
-<!-- END: MainHeader -->
-<main>
-<!-- BEGIN: HeroSection -->
-<section class="relative min-h-[80vh] flex items-center overflow-hidden" data-purpose="hero"><div class="relative z-10 max-w-7xl mx-auto px-4 py-24 grid md:grid-cols-2 gap-12 items-center"><div class="space-y-6"><span class="text-[10px] tracking-[0.2em] font-bold uppercase text-primary/80">Diagnostico Inteligente</span><h1 class="font-serif text-5xl md:text-6xl text-primary font-bold leading-[1.1] tracking-tight">El puente hacia un <br>hogar <span class="italic">consciente.</span></h1><p class="text-gray-600 text-lg max-w-md leading-relaxed tracking-wide font-light">Aeterna revela la verdad detras de los productos cotidianos. Analizamos los quimicos de tu hogar para identificar riesgos ocultos y acomparar tu transicion ecologica con inteligencia artificial.</p><div class="pt-4"><a class="bg-primary hover:bg-primary-dark text-white px-8 py-3 rounded-custom font-medium inline-block transition-transform hover:scale-105" href="#calculadora"></a><a class="text-white px-6 py-2.5 font-label-md text-label-md rounded-full hover:bg-primary transition-all duration-300 shadow-sm bg-primary" href="#calculadora" title="Comienza el diagnóstico inteligente de tu hogar ahora">Iniciar Diagnóstico</a></div></div><div class="relative hidden md:block"><img alt="Interior Consciente" class="rounded-lg shadow-xl w-full object-cover aspect-[4/3]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3tcXSXPHKBhyyS5vbK8jyotKYa-9ieoCqx0xFFRPJEm_KZxV9VUnpqf_qTsdcBTGSUdpAiRYrBVHD177Sw_PAORLHnu36c7T7elCRyV1r246TLIGgmBpou8cFrqBBCbZ1YxQtNCYA7EP5ZtoXhZzBOqQAT07itqFHMyWQl2WIJ-uxr4HrbOWF7ZtgMRD6gv-UOpXsCq16bGd5T8aHoxTLFjRqUWN_ICn5gqfXcEjJkYiLYsJppo_GqelBxJG80dpiwEqDTDA4btIdvSE"></div></div></section>
-<!-- END: HeroSection -->
-<!-- BEGIN: RiskCalculator -->
-<section class="bg-surface-dim/30 py-20 px-4" id="products-catalog">
-<div class="max-w-6xl mx-auto text-center mb-16">
-<h2 class="font-serif text-4xl text-primary mb-4">Calculadora de Riesgo</h2>
-<p class="text-gray-600 max-w-2xl mx-auto">
-          Selecciona los productos comerciales o tradicionales que utilizas actualmente en tu hogar para analizar su impacto.
-        </p>
-</div>
-<div class="max-w-6xl mx-auto space-y-16">
-<!-- Category: Lavandería -->
-<div data-purpose="category-section">
-<h3 class="flex items-center gap-3 text-primary font-bold mb-8 border-b border-primary/20 pb-2">
-<svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
-            Lavandería y Cuidado Textil
-          </h3>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-<!-- Card -->
-<div class="product-card bg-surface p-6 border border-primary/10 rounded-custom flex flex-col justify-between" onclick="toggleCard(this)">
-<div class="flex justify-between items-start mb-4">
-<svg class="h-6 w-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path></svg>
-<input class="checkbox-custom rounded border-gray-300 text-primary focus:ring-primary pointer-events-none" type="checkbox">
-</div>
-<div>
-<h4 class="font-bold text-sm mb-1">Detergente Comercial</h4>
-<p class="text-[11px] text-gray-500 leading-tight">Frecuentemente con Sulfatos (SLS) ligados a dermatitis.</p>
-</div>
-</div>
-<!-- More Lavanderia Cards -->
-<div class="product-card bg-surface p-6 border border-primary/10 rounded-custom flex flex-col justify-between" onclick="toggleCard(this)">
-<div class="flex justify-between items-start mb-4">
-<svg class="h-6 w-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 12V4a2 2 0 012-2h12a2 2 0 012 2v8M4 12v6a2 2 0 002 2h12a2 2 0 002-2v-6m-16 0h16"></path></svg>
-<input class="checkbox-custom rounded border-gray-300 text-primary focus:ring-primary pointer-events-none" type="checkbox">
-</div>
-<div>
-<h4 class="font-bold text-sm mb-1">Suavizante Artificial</h4>
-<p class="text-[11px] text-gray-500 leading-tight">Rico en Ftalatos y disruptores endocrinos ocultos.</p>
-</div>
-</div>
-<div class="product-card bg-surface p-6 border border-primary/10 rounded-custom flex flex-col justify-between" onclick="toggleCard(this)">
-<div class="flex justify-between items-start mb-4">
-<svg class="h-6 w-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-<input class="checkbox-custom rounded border-gray-300 text-primary focus:ring-primary pointer-events-none" type="checkbox">
-</div>
-<div>
-<h4 class="font-bold text-sm mb-1">Quitamanchas Químico</h4>
-<p class="text-[11px] text-gray-500 leading-tight">Peróxidos fuertes ligados a alergias cutáneas.</p>
-</div>
-</div>
-<div class="product-card bg-surface p-6 border border-primary/10 rounded-custom flex flex-col justify-between" onclick="toggleCard(this)">
-<div class="flex justify-between items-start mb-4">
-<svg class="h-6 w-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
-<input class="checkbox-custom rounded border-gray-300 text-primary focus:ring-primary pointer-events-none" type="checkbox">
-</div>
-<div>
-<h4 class="font-bold text-sm mb-1">Cloro / Blanqueador</h4>
-<p class="text-[11px] text-gray-500 leading-tight">Irritante respiratorio severo en espacios cerrados.</p>
-</div>
-</div>
-</div>
-</div>
-<!-- Category: Cocina -->
-<div data-purpose="category-section">
-<h3 class="flex items-center gap-3 text-primary font-bold mb-8 border-b border-primary/20 pb-2">
-<svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 3h18v18H3V3z M9 9h6v6H9V9z"></path></svg>
-            Cocina y Alimentos
-          </h3>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-<div class="product-card bg-surface p-6 border border-primary/10 rounded-custom flex flex-col justify-between" onclick="toggleCard(this)">
-<div class="flex justify-between items-start mb-4"><svg class="h-6 w-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg><input class="checkbox-custom rounded text-primary pointer-events-none" type="checkbox"></div>
-<div>
-<h4 class="font-bold text-sm mb-1">Lavaplatos Líquido</h4>
-<p class="text-[11px] text-gray-500 leading-tight">Suele contener químicos que alteran la microbiota.</p>
-</div>
-</div>
-<div class="product-card bg-surface p-6 border border-primary/10 rounded-custom flex flex-col justify-between" onclick="toggleCard(this)">
-<div class="flex justify-between items-start mb-4"><svg class="h-6 w-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path></svg><input class="checkbox-custom rounded text-primary pointer-events-none" type="checkbox"></div>
-<div>
-<h4 class="font-bold text-sm mb-1">Desengrasante Fuerte</h4>
-<p class="text-[11px] text-gray-500 leading-tight">Vapores corrosivos y sosa cáustica que irritan los ojos.</p>
-</div>
-</div>
-<div class="product-card bg-surface p-6 border border-primary/10 rounded-custom flex flex-col justify-between" onclick="toggleCard(this)">
-<div class="flex justify-between items-start mb-4"><svg class="h-6 w-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg><input class="checkbox-custom rounded text-primary pointer-events-none" type="checkbox"></div>
-<div>
-<h4 class="font-bold text-sm mb-1">Limpia Acero Inoxidable</h4>
-<p class="text-[11px] text-gray-500 leading-tight">Contiene destilados de petróleo inflamables.</p>
-</div>
-</div>
-</div>
-</div>
-<!-- Category: Baños -->
-<div data-purpose="category-section">
-<h3 class="flex items-center gap-3 text-primary font-bold mb-8 border-b border-primary/20 pb-2">
-<svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.673.337a4 4 0 01-2.506.326l-1.741-.348a2 2 0 11.784-3.922l1.74.348a6 6 0 003.758-.488l.673-.337a8 8 0 015.147-.689l2.387.477A2 2 0 0121 12.356V15a2 2 0 01-1.572 1.956L15.428 15.428z"></path></svg>
-            Baños y Tuberías
-          </h3>
-<div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-<div class="product-card bg-surface p-6 border border-primary/10 rounded-custom flex flex-col justify-between" onclick="toggleCard(this)">
-<div class="flex justify-between items-start mb-4"><svg class="h-6 w-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path></svg><input class="checkbox-custom rounded text-primary pointer-events-none" type="checkbox"></div>
-<div>
-<h4 class="font-bold text-sm mb-1">Desinfectante con Lejía</h4>
-<p class="text-[11px] text-gray-500 leading-tight">Riesgo de generar gas tóxico al mezclarse.</p>
-</div>
-</div>
-<div class="product-card bg-surface p-6 border border-primary/10 rounded-custom flex flex-col justify-between" onclick="toggleCard(this)">
-<div class="flex justify-between items-start mb-4"><svg class="h-6 w-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.673.337a4 4 0 01-2.506.326l-1.741-.348a2 2 0 11.784-3.922l1.74.348a6 6 0 003.758-.488l.673-.337a8 8 0 015.147-.689l2.387.477A2 2 0 0121 12.356V15a2 2 0 01-1.572 1.956L15.428 15.428z"></path></svg><input class="checkbox-custom rounded text-primary pointer-events-none" type="checkbox"></div>
-<div>
-<h4 class="font-bold text-sm mb-1">Pastillas para Inodoro</h4>
-<p class="text-[11px] text-gray-500 leading-tight">Emiten diclorobenceno de forma constante al ambiente.</p>
-</div>
-</div>
-<div class="product-card bg-surface p-6 border border-primary/10 rounded-custom flex flex-col justify-between" onclick="toggleCard(this)">
-<div class="flex justify-between items-start mb-4"><svg class="h-6 w-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path></svg><input class="checkbox-custom rounded text-primary pointer-events-none" type="checkbox"></div>
-<div>
-<h4 class="font-bold text-sm mb-1">Destapacaños Químico</h4>
-<p class="text-[11px] text-gray-500 leading-tight">Sosa cáustica peligrosa al inhalar en espacios pequeños.</p>
-</div>
-</div>
-<div class="product-card bg-surface p-6 border border-primary/10 rounded-custom flex flex-col justify-between" onclick="toggleCard(this)">
-<div class="flex justify-between items-start mb-4"><svg class="h-6 w-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"></path></svg><input class="checkbox-custom rounded text-primary pointer-events-none" type="checkbox"></div>
-<div>
-<h4 class="font-bold text-sm mb-1">Antimoho / Antihongos</h4>
-<p class="text-[11px] text-gray-500 leading-tight">Fungicidas tóxicos que pueden irritar severamente las vías respiratorias.</p>
-</div>
-</div>
-</div>
-</div>
-<!-- More categories would follow same pattern... -->
-<!-- BEGIN: AnalysisTrigger -->
-<div class="pt-20">
-<div class="bg-surface border border-primary/20 p-12 rounded-lg text-center shadow-inner">
-<div class="inline-block p-4 bg-primary/5 rounded-full mb-6 text-primary">
-<svg class="h-10 w-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
-</div>
-<h3 class="font-serif text-3xl text-primary mb-4">Procesar Datos de mi Hogar</h3>
-<p class="text-gray-600 mb-8 max-w-lg mx-auto">
-              Una vez seleccionados tus productos habituales, nuestra IA revelará el nivel de toxicidad oculta en tus espacios.
-            </p>
-<button class="bg-primary hover:bg-primary-dark text-white px-10 py-4 rounded-custom font-bold text-sm transition-all shadow-md" id="btn-analyze">
-              Iniciar Análisis con Inteligencia Artificial
-            </button>
-</div>
-</div>
-<!-- END: AnalysisTrigger -->
-</div>
-</section>
-<!-- END: RiskCalculator -->
-<!-- BEGIN: LoadingState (Hidden by default) -->
-<section class="hidden fixed inset-0 z-50 bg-surface/95 flex items-center justify-center p-4" id="loading-state">
-<div class="text-center">
-<div class="w-24 h-24 border-4 border-primary/20 border-t-primary rounded-full animate-spin mx-auto mb-6"></div>
-<h3 class="font-serif text-3xl text-primary mb-2">Analizando Entorno...</h3>
-<p class="text-gray-500 italic" id="loading-text">Cruzando datos con bases de datos ecotoxicológicas...</p>
-</div>
-</section>
-<!-- END: LoadingState -->
-<!-- BEGIN: LeadFormSection -->
-<section class="py-24 bg-white/50" id="lead-form-section">
-<div class="max-w-xl mx-auto px-4 bg-surface-dim/40 border border-primary/10 p-10 rounded-xl text-center">
-<!-- Contenedor para el resultado dinámico del riesgo -->
-<div id="resultado-toxicidad" class="hidden"></div>
+    </script>
+    
+    <style>
+        body {
+            background-color: #fff9e7;
+            color: #333;
+        }
+        .product-card {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .product-card:hover {
+            border-color: #765530;
+            background-color: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.05);
+        }
+        .product-card.selected {
+            border-color: #765530;
+            background-color: #fcf4ce;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+        }
+        .checkbox-custom:checked {
+            background-color: #765530;
+            border-color: #765530;
+        }
+        /* Toast Animation */
+        @keyframes slideUpFade {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .toast-enter {
+            animation: slideUpFade 0.3s ease-out forwards;
+        }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="font-sans antialiased text-gray-800 flex flex-col min-h-screen">
 
-<div class="mb-6 flex justify-center">
-<svg class="h-8 w-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
-</div>
-<h2 class="font-serif text-3xl text-primary mb-2">Cultiva un Hogar Consciente</h2>
-<p class="text-gray-600 text-sm mb-8">Déjanos tus datos para recibir tu diagnóstico detallado y el catálogo exacto con las alternativas Aeterna para reemplazar los tóxicos de tu hogar.</p>
-<form class="space-y-4">
-<input class="w-full bg-white border-none rounded-custom py-3 px-4 focus:ring-1 focus:ring-primary shadow-sm" placeholder="Tu Nombre Completo" type="text">
-<input class="w-full bg-white border-none rounded-custom py-3 px-4 focus:ring-1 focus:ring-primary shadow-sm" placeholder="Número de WhatsApp" type="tel">
-<input class="w-full bg-white border-none rounded-custom py-3 px-4 focus:ring-1 focus:ring-primary shadow-sm" placeholder="Correo Electrónico" type="email">
-<button class="w-full bg-primary hover:bg-primary-dark text-white font-bold py-4 rounded-custom mt-4 transition-colors" type="submit">
-            Solicitar Alternativas
-          </button>
-</form>
-<p class="text-[10px] text-gray-400 mt-6 uppercase tracking-wider">Respetamos tu privacidad y el planeta.</p>
-</div>
-</section>
-<!-- END: LeadFormSection -->
-</main>
-<!-- BEGIN: Footer -->
-<footer class="bg-surface-dim border-t border-primary/10 py-16 px-4">
-<div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-12 items-center">
-<div class="flex flex-col items-center md:items-start gap-4">
-<img alt="Aeterna Logo" class="h-12 w-auto grayscale opacity-70" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQRsVM98BaUsDjKRDeI8BOS1iZws3Erulz1JZDO5kxLpkI0goOQTMCOF-qWIcBy0G5e5X1LCZEPJNgKxjpFMGcofkyFMFrHmRxvqhImalo4Dfyi9O_PthhifcgXBtNRbw4yc9UbEExxiOER6lVGFNRodNBXMASUSOtfuakx8vM5tfgAZ8yhs7T-xP2m8OC1bvd-PQANN9Myg49AMlx6aSuXDnkh50_zrrrPG5Fy4nCRctbs2RserMkbKGxO7SKcR9eNYHEzV3aM66D">
-</div>
-<nav class="flex flex-wrap justify-center gap-6 text-sm text-primary/70 font-medium">
-<a class="hover:text-primary transition-colors" href="#">Sostenibilidad</a>
-<a class="hover:text-primary transition-colors" href="#">Política de Privacidad</a>
-<a class="hover:text-primary transition-colors" href="#">Términos de Servicio</a>
-<a class="hover:text-primary transition-colors" href="#">Contacto</a>
-</nav>
-<div class="text-center md:text-right">
-<p class="text-[11px] text-primary/60">
-          © 2024 Aeterna. Creado con precisión natural.
-        </p>
-</div>
-</div>
-</footer>
-<!-- END: Footer -->
-<script data-purpose="interaction-logic">
-    function toggleCard(element) {
-      element.classList.toggle('selected');
-      const checkbox = element.querySelector('input[type="checkbox"]');
-      checkbox.checked = !checkbox.checked;
-    }
+    <header class="sticky top-0 z-40 bg-surface/90 backdrop-blur-md border-b border-outline-variant transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-20">
+            <!-- Logo -->
+            <div class="flex-shrink-0 flex items-center cursor-pointer" onclick="switchView('home')">
+                <span class="font-serif text-2xl font-bold text-primary flex items-center gap-2">
+                    <span class="material-symbols-outlined text-3xl">eco</span>
+                    Aeterna
+                </span>
+            </div>
+            
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex items-center space-x-8">
+                <button id="nav-home" onclick="switchView('home')" class="text-sm font-bold text-primary border-b-2 border-primary pb-1 transition-colors outline-none">Inicio</button>
+                <button id="nav-catalog" onclick="switchView('catalog')" class="text-sm font-medium text-on-surface-variant hover:text-primary transition-colors outline-none">Catálogo</button>
+                <button id="nav-vendor" onclick="switchView('vendor')" class="text-sm font-medium text-on-surface-variant hover:text-primary transition-colors outline-none">Vender con Nosotros</button>
+                <button onclick="switchView('contacto')" class="text-sm font-medium text-on-surface-variant hover:text-primary transition-colors outline-none">Contacto</button>
+            </nav>
+            
+            <!-- Actions -->
+            <div class="flex items-center space-x-4">
+                <button onclick="switchView('checkout')" class="relative material-symbols-outlined text-primary p-2 hover:bg-primary/5 rounded-full transition-colors outline-none" title="Ver carrito" id="cart-btn">
+                    shopping_cart
+                    <span id="cart-badge" class="absolute top-0 right-0 bg-error text-white text-[10px] font-bold h-4 w-4 flex items-center justify-center rounded-full transform scale-0 transition-transform duration-300">0</span>
+                </button>
+                <button onclick="switchView('home'); setTimeout(() => document.getElementById('calculadora').scrollIntoView({behavior: 'smooth'}), 100);" class="hidden sm:inline-flex text-white px-6 py-2.5 text-sm font-semibold rounded-full hover:bg-primary/90 transition-all duration-300 shadow-sm bg-primary outline-none">
+                    Diagnóstico
+                </button>
+            </div>
+        </div>
+    </header>
 
-    const analyzeBtn = document.getElementById('btn-analyze');
-    const loadingState = document.getElementById('loading-state');
-    const loadingText = document.getElementById('loading-text');
-
-    const phrases = [
-      "Cruzando datos con bases de datos ecotoxicológicas...",
-      "Calculando niveles de bioacumulación...",
-      "Identificando disruptores endocrinos...",
-      "Generando alternativas sostenibles..."
-    ];
-
-    // Mapa de valores de toxicidad (riesgo) asignado a cada producto
-    const riskMap = {
-      "Detergente Comercial": 15,
-      "Suavizante Artificial": 20,
-      "Quitamanchas Químico": 15,
-      "Cloro / Blanqueador": 25,
-      "Lavaplatos Líquido": 10,
-      "Desengrasante Fuerte": 20,
-      "Limpia Acero Inoxidable": 15,
-      "Desinfectante con Lejía": 25,
-      "Pastillas para Inodoro": 20,
-      "Destapacaños Químico": 25,
-      "Antimoho / Antihongos": 20
-    };
-
-    analyzeBtn.addEventListener('click', () => {
-      // Calcular toxicidad
-      const selectedCards = document.querySelectorAll('.product-card.selected');
-      let totalRisk = 0;
-      
-      if(selectedCards.length === 0) {
-          alert("Por favor, selecciona al menos un producto para analizar.");
-          return;
-      }
-
-      // Sumar los valores basado en el título del producto
-      selectedCards.forEach(card => {
-         const titleEl = card.querySelector('h4');
-         if(titleEl && riskMap[titleEl.textContent.trim()]) {
-             totalRisk += riskMap[titleEl.textContent.trim()];
-         } else {
-             totalRisk += 10; // default fallback
-         }
-      });
-      
-      // Limitar máximo a 100%
-      if (totalRisk > 100) totalRisk = 100;
-
-      // Determinar clase de colores
-      let riskLevel = 'Bajo';
-      let colorClass = 'text-green-600';
-      let borderClass = 'border-green-500';
-      
-      if (totalRisk > 30) { riskLevel = 'Medio'; colorClass = 'text-orange-500'; borderClass = 'border-orange-500'; }
-      if (totalRisk > 60) { riskLevel = 'Alto'; colorClass = 'text-red-600'; borderClass = 'border-red-500'; }
-
-      loadingState.classList.remove('hidden');
-      let i = 0;
-      const interval = setInterval(() => {
-        loadingText.textContent = phrases[i];
-        i = (i + 1) % phrases.length;
-      }, 1500);
-
-      setTimeout(() => {
-        clearInterval(interval);
-        loadingState.classList.add('hidden');
+    <main class="flex-grow flex flex-col w-full">
         
-        // Mostrar el resultado en el contenedor
-        const resultContainer = document.getElementById('resultado-toxicidad');
-        if(resultContainer) {
-            resultContainer.innerHTML = `
-                <div class="bg-white rounded-xl p-8 mb-8 text-center shadow-lg border-2 ${borderClass} transform transition-all duration-500 hover:scale-[1.02]">
-                    <p class="text-gray-500 text-xs uppercase tracking-[0.2em] font-bold mb-2">Nivel de Riesgo Detectado</p>
-                    <h3 class="text-7xl font-serif ${colorClass} font-bold leading-none">${totalRisk}%</h3>
-                    <p class="text-2xl font-bold mt-2 ${colorClass}">${riskLevel}</p>
-                    <p class="text-gray-600 mt-4 text-sm leading-relaxed max-w-sm mx-auto">Basado en tu selección, este es el nivel estimado de carga tóxica. Déjanos tus datos para recibir tu reporte detallado y cómo solucionarlo.</p>
+        <div id="view-home" class="w-full">
+            <!-- Hero Section -->
+            <section class="relative min-h-[80vh] flex items-center overflow-hidden">
+                <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 rounded-full bg-surface-dim/40 blur-3xl opacity-50 pointer-events-none"></div>
+                <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 rounded-full bg-primary/10 blur-3xl opacity-50 pointer-events-none"></div>
+
+                <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-24 grid lg:grid-cols-2 gap-12 items-center">
+                    <div class="space-y-8 max-w-2xl">
+                        <span class="inline-block py-1 px-3 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-widest">
+                            Diagnóstico Inteligente
+                        </span>
+                        <h1 class="font-serif text-5xl sm:text-6xl lg:text-7xl text-primary font-bold leading-[1.1] tracking-tight">
+                            El puente hacia un <br><span class="italic font-light">hogar consciente.</span>
+                        </h1>
+                        <p class="text-gray-600 text-lg sm:text-xl leading-relaxed font-light">
+                            Aeterna revela la verdad detrás de los productos cotidianos. Analizamos los químicos de tu hogar para identificar riesgos ocultos y acompañar tu transición ecológica con inteligencia artificial.
+                        </p>
+                        <div class="pt-4 flex flex-col sm:flex-row gap-4">
+                            <button onclick="document.getElementById('calculadora').scrollIntoView({behavior: 'smooth'})" class="inline-flex justify-center items-center text-white px-8 py-3.5 text-base font-semibold rounded-full hover:bg-primary-dark transition-all duration-300 shadow-lg hover:shadow-xl bg-primary outline-none">
+                                Comenzar Diagnóstico
+                                <span class="material-symbols-outlined ml-2 text-xl">arrow_forward</span>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="relative hidden lg:block">
+                        <div class="absolute inset-0 bg-primary/5 rounded-2xl transform translate-x-4 translate-y-4"></div>
+                        <img alt="Interior Consciente" class="relative rounded-2xl shadow-xl w-full object-cover aspect-[4/3] border border-white/50" src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80">
+                    </div>
                 </div>
-            `;
-            resultContainer.classList.remove('hidden');
-        }
-        
-        // Hacer scroll suave hacia el resultado
-        const formSection = document.getElementById('lead-form-section');
-        if(formSection) {
-            formSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            </section>
+
+            <section class="bg-surface-dim/20 py-24 px-4 sm:px-6 lg:px-8" id="calculadora">
+                <div class="max-w-6xl mx-auto text-center mb-16">
+                    <h2 class="font-serif text-4xl sm:text-5xl text-primary mb-6 font-bold">Calculadora de Riesgo</h2>
+                    <p class="text-gray-600 text-lg max-w-2xl mx-auto font-light">
+                        Selecciona los productos comerciales o tradicionales que utilizas actualmente en tu hogar para analizar su impacto en tu salud y el medio ambiente.
+                    </p>
+                </div>
+
+                <div class="max-w-6xl mx-auto space-y-16">
+                    <!-- Category: Lavandería -->
+                    <div>
+                        <h3 class="flex items-center gap-3 text-2xl text-primary font-serif mb-6 border-b border-primary/20 pb-4">
+                            <span class="material-symbols-outlined text-3xl">local_laundry_service</span>
+                            Lavandería y Cuidado Textil
+                        </h3>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4">
+                            <div class="product-card bg-surface p-5 border border-primary/10 rounded-xl flex flex-col justify-between h-full" onclick="toggleCard(this)">
+                                <div class="flex justify-between items-start mb-4">
+                                    <span class="material-symbols-outlined text-2xl text-primary/80">bubble_chart</span>
+                                    <input class="checkbox-custom h-5 w-5 rounded border-gray-300 text-primary focus:ring-primary pointer-events-none" type="checkbox">
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-800 text-sm mb-1">Detergente en Polvo</h4>
+                                    <p class="text-[11px] text-gray-500 leading-relaxed">Fosfatos pesados y abrillantadores ópticos que no se biodegradan.</p>
+                                </div>
+                            </div>
+                            <div class="product-card bg-surface p-5 border border-primary/10 rounded-xl flex flex-col justify-between h-full" onclick="toggleCard(this)">
+                                <div class="flex justify-between items-start mb-4">
+                                    <span class="material-symbols-outlined text-2xl text-primary/80">soap</span>
+                                    <input class="checkbox-custom h-5 w-5 rounded border-gray-300 text-primary focus:ring-primary pointer-events-none" type="checkbox">
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-800 text-sm mb-1">Detergente Líquido</h4>
+                                    <p class="text-[11px] text-gray-500 leading-relaxed">Alto en Sulfatos (SLS) y colorantes sintéticos ligados a dermatitis.</p>
+                                </div>
+                            </div>
+                            <div class="product-card bg-surface p-5 border border-primary/10 rounded-xl flex flex-col justify-between h-full" onclick="toggleCard(this)">
+                                <div class="flex justify-between items-start mb-4">
+                                    <span class="material-symbols-outlined text-2xl text-primary/80">waves</span>
+                                    <input class="checkbox-custom h-5 w-5 rounded border-gray-300 text-primary focus:ring-primary pointer-events-none" type="checkbox">
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-800 text-sm mb-1">Suavizante Comercial</h4>
+                                    <p class="text-[11px] text-gray-500 leading-relaxed">Rico en Ftalatos y disruptores endocrinos que penetran la piel.</p>
+                                </div>
+                            </div>
+                            <div class="product-card bg-surface p-5 border border-primary/10 rounded-xl flex flex-col justify-between h-full" onclick="toggleCard(this)">
+                                <div class="flex justify-between items-start mb-4">
+                                    <span class="material-symbols-outlined text-2xl text-primary/80">science</span>
+                                    <input class="checkbox-custom h-5 w-5 rounded border-gray-300 text-primary focus:ring-primary pointer-events-none" type="checkbox">
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-800 text-sm mb-1">Cloro / Blanqueador</h4>
+                                    <p class="text-[11px] text-gray-500 leading-relaxed">Hipoclorito de sodio: gas tóxico e irritante respiratorio severo.</p>
+                                </div>
+                            </div>
+                            <div class="product-card bg-surface p-5 border border-primary/10 rounded-xl flex flex-col justify-between h-full" onclick="toggleCard(this)">
+                                <div class="flex justify-between items-start mb-4">
+                                    <span class="material-symbols-outlined text-2xl text-primary/80">opacity</span>
+                                    <input class="checkbox-custom h-5 w-5 rounded border-gray-300 text-primary focus:ring-primary pointer-events-none" type="checkbox">
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-800 text-sm mb-1">Quitamanchas Químico</h4>
+                                    <p class="text-[11px] text-gray-500 leading-relaxed">Peróxidos fuertes y solventes ligados a alergias cutáneas.</p>
+                                </div>
+                            </div>
+                            <div class="product-card bg-surface p-5 border border-primary/10 rounded-xl flex flex-col justify-between h-full" onclick="toggleCard(this)">
+                                <div class="flex justify-between items-start mb-4">
+                                    <span class="material-symbols-outlined text-2xl text-primary/80">dry_cleaning</span>
+                                    <input class="checkbox-custom h-5 w-5 rounded border-gray-300 text-primary focus:ring-primary pointer-events-none" type="checkbox">
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-800 text-sm mb-1">Jabón en Barra Azul</h4>
+                                    <p class="text-[11px] text-gray-500 leading-relaxed">Aunque parece tradicional, contiene anilinas sintéticas y silicatos.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Category: Cocina -->
+                    <div>
+                        <h3 class="flex items-center gap-3 text-2xl text-primary font-serif mb-6 border-b border-primary/20 pb-4">
+                            <span class="material-symbols-outlined text-3xl">countertops</span>
+                            Cocina y Superficies
+                        </h3>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                            <div class="product-card bg-surface p-5 border border-primary/10 rounded-xl flex flex-col justify-between h-full" onclick="toggleCard(this)">
+                                <div class="flex justify-between items-start mb-4">
+                                    <span class="material-symbols-outlined text-2xl text-primary/80">cleaning_services</span>
+                                    <input class="checkbox-custom h-5 w-5 rounded border-gray-300 text-primary pointer-events-none" type="checkbox">
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-800 text-sm mb-1">Lavaplatos Líquido</h4>
+                                    <p class="text-[11px] text-gray-500 leading-relaxed">Tensioactivos derivados del petróleo que dañan la barrera de la piel.</p>
+                                </div>
+                            </div>
+                            <div class="product-card bg-surface p-5 border border-primary/10 rounded-xl flex flex-col justify-between h-full" onclick="toggleCard(this)">
+                                <div class="flex justify-between items-start mb-4">
+                                    <span class="material-symbols-outlined text-2xl text-primary/80">spoke</span>
+                                    <input class="checkbox-custom h-5 w-5 rounded border-gray-300 text-primary pointer-events-none" type="checkbox">
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-800 text-sm mb-1">Lavaplatos en Crema</h4>
+                                    <p class="text-[11px] text-gray-500 leading-relaxed">Microplásticos abrasivos que terminan en los ríos y océanos.</p>
+                                </div>
+                            </div>
+                            <div class="product-card bg-surface p-5 border border-primary/10 rounded-xl flex flex-col justify-between h-full" onclick="toggleCard(this)">
+                                <div class="flex justify-between items-start mb-4">
+                                    <span class="material-symbols-outlined text-2xl text-primary/80">spray</span>
+                                    <input class="checkbox-custom h-5 w-5 rounded border-gray-300 text-primary pointer-events-none" type="checkbox">
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-800 text-sm mb-1">Desengrasante Fuerte</h4>
+                                    <p class="text-[11px] text-gray-500 leading-relaxed">Solventes industriales, vapores corrosivos y amoníaco tóxico.</p>
+                                </div>
+                            </div>
+                            <div class="product-card bg-surface p-5 border border-primary/10 rounded-xl flex flex-col justify-between h-full" onclick="toggleCard(this)">
+                                <div class="flex justify-between items-start mb-4">
+                                    <span class="material-symbols-outlined text-2xl text-primary/80">microwave</span>
+                                    <input class="checkbox-custom h-5 w-5 rounded border-gray-300 text-primary pointer-events-none" type="checkbox">
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-800 text-sm mb-1">Limpia Hornos</h4>
+                                    <p class="text-[11px] text-gray-500 leading-relaxed">Álcalis cáusticos severos que queman tejido al menor contacto.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Category: Pisos y Ambientes -->
+                    <div>
+                        <h3 class="flex items-center gap-3 text-2xl text-primary font-serif mb-6 border-b border-primary/20 pb-4">
+                            <span class="material-symbols-outlined text-3xl">home</span>
+                            Pisos y Ambientes
+                        </h3>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+                            <div class="product-card bg-surface p-5 border border-primary/10 rounded-xl flex flex-col justify-between h-full" onclick="toggleCard(this)">
+                                <div class="flex justify-between items-start mb-4">
+                                    <span class="material-symbols-outlined text-2xl text-primary/80">format_color_fill</span>
+                                    <input class="checkbox-custom h-5 w-5 rounded border-gray-300 text-primary pointer-events-none" type="checkbox">
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-800 text-sm mb-1">Limpiapisos Perfumado</h4>
+                                    <p class="text-[11px] text-gray-500 leading-relaxed">COVs (Compuestos Orgánicos Volátiles) que contaminan el aire interior.</p>
+                                </div>
+                            </div>
+                            <div class="product-card bg-surface p-5 border border-primary/10 rounded-xl flex flex-col justify-between h-full" onclick="toggleCard(this)">
+                                <div class="flex justify-between items-start mb-4">
+                                    <span class="material-symbols-outlined text-2xl text-primary/80">layers</span>
+                                    <input class="checkbox-custom h-5 w-5 rounded border-gray-300 text-primary pointer-events-none" type="checkbox">
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-800 text-sm mb-1">Cera Polimérica</h4>
+                                    <p class="text-[11px] text-gray-500 leading-relaxed">Destilados de petróleo, parafinas y polímeros plásticos sintéticos.</p>
+                                </div>
+                            </div>
+                            <div class="product-card bg-surface p-5 border border-primary/10 rounded-xl flex flex-col justify-between h-full" onclick="toggleCard(this)">
+                                <div class="flex justify-between items-start mb-4">
+                                    <span class="material-symbols-outlined text-2xl text-primary/80">air</span>
+                                    <input class="checkbox-custom h-5 w-5 rounded border-gray-300 text-primary pointer-events-none" type="checkbox">
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-800 text-sm mb-1">Ambientador Aerosol</h4>
+                                    <p class="text-[11px] text-gray-500 leading-relaxed">Propelentes butanos y fragancias químicas que causan asma y alergias.</p>
+                                </div>
+                            </div>
+                            <div class="product-card bg-surface p-5 border border-primary/10 rounded-xl flex flex-col justify-between h-full" onclick="toggleCard(this)">
+                                <div class="flex justify-between items-start mb-4">
+                                    <span class="material-symbols-outlined text-2xl text-primary/80">window</span>
+                                    <input class="checkbox-custom h-5 w-5 rounded border-gray-300 text-primary pointer-events-none" type="checkbox">
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-800 text-sm mb-1">Limpiavidrios (Azul)</h4>
+                                    <p class="text-[11px] text-gray-500 leading-relaxed">Amoníaco y solventes alcohólicos; irritante para mucosas oculares.</p>
+                                </div>
+                            </div>
+                            <div class="product-card bg-surface p-5 border border-primary/10 rounded-xl flex flex-col justify-between h-full" onclick="toggleCard(this)">
+                                <div class="flex justify-between items-start mb-4">
+                                    <span class="material-symbols-outlined text-2xl text-primary/80">pest_control</span>
+                                    <input class="checkbox-custom h-5 w-5 rounded border-gray-300 text-primary pointer-events-none" type="checkbox">
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-800 text-sm mb-1">Insecticida Comercial</h4>
+                                    <p class="text-[11px] text-gray-500 leading-relaxed">Piretroides neurotóxicos peligrosos para el desarrollo de niños y mascotas.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Analysis Trigger -->
+                    <div class="pt-12">
+                        <div class="bg-white border-2 border-primary/10 p-10 lg:p-16 rounded-2xl text-center shadow-sm relative overflow-hidden">
+                            <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-surface-dim/20 via-transparent to-transparent"></div>
+                            <div class="relative z-10">
+                                <div class="inline-flex p-4 bg-primary/10 rounded-full mb-6 text-primary">
+                                    <span class="material-symbols-outlined text-4xl">analytics</span>
+                                </div>
+                                <h3 class="font-serif text-3xl sm:text-4xl text-primary mb-4">Procesar Datos de mi Hogar</h3>
+                                <p class="text-gray-600 mb-10 max-w-xl mx-auto text-lg font-light">
+                                    Nuestra IA cruzará datos para revelar el nivel de toxicidad oculta en tus espacios basado en los productos seleccionados.
+                                </p>
+                                <button class="bg-primary hover:bg-primary-dark text-white px-8 py-4 rounded-full font-bold text-base transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1 outline-none" id="btn-analyze">
+                                    Iniciar Análisis con Inteligencia Artificial
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="contacto" class="py-24 bg-white relative">
+                <div class="max-w-xl mx-auto px-4 relative z-10">
+                    <div class="bg-surface-dim/30 border border-primary/10 p-10 sm:p-12 rounded-3xl text-center shadow-sm" id="form-container">
+                        <div class="mb-6 flex justify-center">
+                            <span class="material-symbols-outlined text-primary text-5xl">potted_plant</span>
+                        </div>
+                        <h2 class="font-serif text-3xl sm:text-4xl text-primary mb-4">Cultiva un Hogar Consciente</h2>
+                        <p class="text-gray-600 text-base mb-10 font-light">
+                            Déjanos tus datos para recibir tu diagnóstico detallado y conocer las alternativas <span class="font-bold text-primary">Aeterna</span> exactas para reemplazar los tóxicos.
+                        </p>
+                        <form class="space-y-5 text-left" onsubmit="event.preventDefault(); document.getElementById('form-container').classList.add('hidden'); document.getElementById('form-success-msg').classList.remove('hidden');">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1 pl-1">Nombre Completo</label>
+                                <input class="w-full bg-white border border-gray-200 rounded-xl py-3.5 px-4 focus:ring-2 focus:ring-primary focus:border-primary shadow-sm outline-none" placeholder="Ej. María Pérez" type="text" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1 pl-1">Número de WhatsApp</label>
+                                <input class="w-full bg-white border border-gray-200 rounded-xl py-3.5 px-4 focus:ring-2 focus:ring-primary focus:border-primary shadow-sm outline-none" placeholder="+57 300 000 0000" type="tel" required>
+                            </div>
+                            <button class="w-full bg-primary hover:bg-primary-dark text-white font-bold py-4 rounded-xl mt-6 transition-colors shadow-lg outline-none flex justify-center items-center gap-2" type="submit">
+                                Solicitar Mi Diagnóstico
+                                <span class="material-symbols-outlined text-xl">send</span>
+                            </button>
+                        </form>
+                    </div>
+                    
+                    <div id="form-success-msg" class="hidden text-center py-16">
+                        <span class="material-symbols-outlined text-6xl text-green-600 mb-4">task_alt</span>
+                        <h3 class="font-serif text-3xl text-primary mb-3">¡Gracias por unirte!</h3>
+                        <p class="text-gray-600">Tu reporte está siendo generado y enviado a tu WhatsApp. Te invitamos a explorar nuestro catálogo mientras tanto.</p>
+                        <button onclick="switchView('catalog')" class="mt-6 bg-primary/10 text-primary font-bold py-3 px-6 rounded-xl hover:bg-primary hover:text-white transition-colors outline-none">Explorar Catálogo</button>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div id="view-catalog" class="hidden flex-grow w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+            <div class="mb-10 md:mb-16">
+                <h1 class="font-serif text-4xl md:text-5xl text-primary mb-4 font-bold tracking-tight">Catálogo Consciente</h1>
+                <p class="text-on-surface-variant max-w-2xl text-lg leading-relaxed">
+                    Soluciones de limpieza formuladas con ingredientes de origen natural para cuidar tu hogar y el planeta con la máxima precisión y eficacia.
+                </p>
+            </div>
+
+            <div class="flex flex-col lg:flex-row gap-8 items-start">
+                <!-- Filters Sidebar -->
+                <aside class="w-full lg:w-64 flex-shrink-0 lg:sticky lg:top-28 z-10">
+                    <div class="bg-surface-container-low rounded-xl p-6 border border-outline-variant shadow-sm">
+                        <h2 class="font-serif text-xl text-primary font-bold mb-6 border-b border-outline-variant/50 pb-3">Filtros</h2>
+                        <div class="mb-8">
+                            <h3 class="text-xs text-on-surface-variant font-bold uppercase tracking-wider mb-4">Categorías</h3>
+                            <div class="space-y-3">
+                                <label class="flex items-center gap-3 cursor-pointer group">
+                                    <input checked class="form-checkbox h-5 w-5 text-primary border-outline-variant rounded focus:ring-primary focus:ring-offset-surface-container-low transition-colors" type="checkbox">
+                                    <span class="text-sm text-gray-800 group-hover:text-primary font-medium">Limpieza de Ropa</span>
+                                </label>
+                                <label class="flex items-center gap-3 cursor-pointer group">
+                                    <input class="form-checkbox h-5 w-5 text-primary border-outline-variant rounded focus:ring-primary focus:ring-offset-surface-container-low transition-colors" type="checkbox">
+                                    <span class="text-sm text-gray-800 group-hover:text-primary font-medium">Cocina & Vajilla</span>
+                                </label>
+                                <label class="flex items-center gap-3 cursor-pointer group">
+                                    <input class="form-checkbox h-5 w-5 text-primary border-outline-variant rounded focus:ring-primary focus:ring-offset-surface-container-low transition-colors" type="checkbox">
+                                    <span class="text-sm text-gray-800 group-hover:text-primary font-medium">Cuidado Multiusos</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+
+                <!-- Product Grid -->
+                <div class="flex-grow w-full">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+                        <!-- Product 1 -->
+                        <div class="group border border-outline-variant rounded-2xl overflow-hidden bg-surface-container-lowest hover:border-primary/40 hover:shadow-lg transition-all duration-300 flex flex-col relative">
+                            <div class="relative aspect-square overflow-hidden bg-white p-6 border-b border-outline-variant/30 flex items-center justify-center">
+                                <img alt="Detergente Natural" class="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500 ease-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBlcbey0-ZtwggK3kCsyvnKHyFMDV-KBTCLCRAu6QvAo7LveM9ocLPCc_2EylT3p8-lORVoihja46Iejq2VpEiBAjQ3JW6iFi1MOs02fyqpjhlsnHKyXrljy1yke_wjgmCUqPwpS3t0ZW4xdDIprCaww1Ief8sAxwG3VL2fg-DBWjxg-1X6trazgprDDXtf52KtTM9VDCVqXqSnXt-BOLqRWYU_l0u62_Kl1uO-xZED-Dg6gKNta5d_2CXyLAr1PadtSGW1uM8TUOVH">
+                                <div class="absolute top-4 left-4 bg-surface-dim/80 backdrop-blur-sm text-primary px-3 py-1 rounded-full text-xs font-bold border border-primary/10 shadow-sm">2 Litros</div>
+                            </div>
+                            <div class="p-6 flex flex-col flex-grow">
+                                <div class="text-primary/60 text-xs font-bold mb-2 uppercase tracking-wider">Lavandería</div>
+                                <h3 class="font-serif text-xl text-primary mb-2 leading-tight font-bold">Detergente Líquido Natural</h3>
+                                <p class="text-on-surface-variant text-sm mb-6 flex-grow line-clamp-3 leading-relaxed">Limpieza profunda con aroma a coco. Cuida las fibras y el color de tus prendas sin químicos agresivos.</p>
+                                <div class="flex items-center justify-between mt-auto pt-4 border-t border-outline-variant/20">
+                                    <span class="text-primary font-bold text-xl">$45.000</span>
+                                    <button onclick="addToCart('Detergente Líquido Natural', 45000, 'https://lh3.googleusercontent.com/aida-public/AB6AXuBlcbey0-ZtwggK3kCsyvnKHyFMDV-KBTCLCRAu6QvAo7LveM9ocLPCc_2EylT3p8-lORVoihja46Iejq2VpEiBAjQ3JW6iFi1MOs02fyqpjhlsnHKyXrljy1yke_wjgmCUqPwpS3t0ZW4xdDIprCaww1Ief8sAxwG3VL2fg-DBWjxg-1X6trazgprDDXtf52KtTM9VDCVqXqSnXt-BOLqRWYU_l0u62_Kl1uO-xZED-Dg6gKNta5d_2CXyLAr1PadtSGW1uM8TUOVH')" class="bg-primary/10 text-primary h-10 w-10 flex items-center justify-center rounded-full hover:bg-primary hover:text-white transition-all outline-none">
+                                        <span class="material-symbols-outlined">add_shopping_cart</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product 2 -->
+                        <div class="group border border-outline-variant rounded-2xl overflow-hidden bg-surface-container-lowest hover:border-primary/40 hover:shadow-lg transition-all duration-300 flex flex-col relative">
+                            <div class="relative aspect-square overflow-hidden bg-white p-6 border-b border-outline-variant/30 flex items-center justify-center">
+                                <img alt="Lavaplatos Líquido" class="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500 ease-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAF-w8DaUGiDBS2ih8fLKc-ZMN9S5j-1wWqmBDryDUaQzGnUrE04GCHhr4iFd9VVm0Q5YXhQLgImC5Rog__ymOIl0OwJbko_6R_-3JOsFektLsI-7eXhdCq76GirwQuBItvs8OLQV4YZVTLUhSMz498iQ46qfEOaBYrH2r89cxxvDRSv441Nl64AQdJyNaN7OllrEVfWsvBZJ111mjRokZE7kRSnSTZT7bdMp1uZfOUd3e_gy6ARmJ4ceAcU1YE4dnhxH-CciNS9mpM">
+                                <div class="absolute top-4 left-4 bg-surface-dim/80 backdrop-blur-sm text-primary px-3 py-1 rounded-full text-xs font-bold border border-primary/10 shadow-sm">500 ml</div>
+                            </div>
+                            <div class="p-6 flex flex-col flex-grow">
+                                <div class="text-primary/60 text-xs font-bold mb-2 uppercase tracking-wider">Cocina</div>
+                                <h3 class="font-serif text-xl text-primary mb-2 leading-tight font-bold">Lavaplatos Botánico</h3>
+                                <p class="text-on-surface-variant text-sm mb-6 flex-grow line-clamp-3 leading-relaxed">Fórmula hipoalergénica botánica que desengrasa cuidando la barrera natural de la piel de tus manos.</p>
+                                <div class="flex items-center justify-between mt-auto pt-4 border-t border-outline-variant/20">
+                                    <span class="text-primary font-bold text-xl">$25.000</span>
+                                    <button onclick="addToCart('Lavaplatos Botánico', 25000, 'https://lh3.googleusercontent.com/aida-public/AB6AXuAF-w8DaUGiDBS2ih8fLKc-ZMN9S5j-1wWqmBDryDUaQzGnUrE04GCHhr4iFd9VVm0Q5YXhQLgImC5Rog__ymOIl0OwJbko_6R_-3JOsFektLsI-7eXhdCq76GirwQuBItvs8OLQV4YZVTLUhSMz498iQ46qfEOaBYrH2r89cxxvDRSv441Nl64AQdJyNaN7OllrEVfWsvBZJ111mjRokZE7kRSnSTZT7bdMp1uZfOUd3e_gy6ARmJ4ceAcU1YE4dnhxH-CciNS9mpM')" class="bg-primary/10 text-primary h-10 w-10 flex items-center justify-center rounded-full hover:bg-primary hover:text-white transition-all outline-none">
+                                        <span class="material-symbols-outlined">add_shopping_cart</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product 3 -->
+                        <div class="group border border-outline-variant rounded-2xl overflow-hidden bg-surface-container-lowest hover:border-primary/40 hover:shadow-lg transition-all duration-300 flex flex-col relative">
+                            <div class="relative aspect-square overflow-hidden bg-white p-6 border-b border-outline-variant/30 flex items-center justify-center">
+                                <img alt="Limpiador Multiusos" class="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500 ease-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSEXjzyKm7NO7Gp5iL0spVjDz4yIKuQXTHubVKvL8uheFqacr1l6k30lNXdMrbsC3KTkIINH-wmloIuo-b2y6nBpNoBet4zG6RAZWp1d9uz0wqnMdI3xAjBVAROpGRw2yZcbTwZsEuwdKkWCrGDZ81q1HxjPKoMnz713jIUzFelS7Ystq-59g-Rn8F1CQ1QxGblmhml7GhD9qrkaRfKmbMtHfVOCeik7tZlDUqD8QO6_6Q_9K9-a05Py70-OfnlcfxHdHpLpFlvfNf">
+                                <div class="absolute top-4 left-4 bg-surface-dim/80 backdrop-blur-sm text-primary px-3 py-1 rounded-full text-xs font-bold border border-primary/10 shadow-sm">500 ml</div>
+                            </div>
+                            <div class="p-6 flex flex-col flex-grow">
+                                <div class="text-primary/60 text-xs font-bold mb-2 uppercase tracking-wider">Hogar</div>
+                                <h3 class="font-serif text-xl text-primary mb-2 leading-tight font-bold">Limpiador Multiusos</h3>
+                                <p class="text-on-surface-variant text-sm mb-6 flex-grow line-clamp-3 leading-relaxed">Ecolimpia: potente contra bacterias y suciedad en múltiples superficies con un aroma a aceites esenciales.</p>
+                                <div class="flex items-center justify-between mt-auto pt-4 border-t border-outline-variant/20">
+                                    <span class="text-primary font-bold text-xl">$27.000</span>
+                                    <button onclick="addToCart('Limpiador Multiusos', 27000, 'https://lh3.googleusercontent.com/aida-public/AB6AXuCSEXjzyKm7NO7Gp5iL0spVjDz4yIKuQXTHubVKvL8uheFqacr1l6k30lNXdMrbsC3KTkIINH-wmloIuo-b2y6nBpNoBet4zG6RAZWp1d9uz0wqnMdI3xAjBVAROpGRw2yZcbTwZsEuwdKkWCrGDZ81q1HxjPKoMnz713jIUzFelS7Ystq-59g-Rn8F1CQ1QxGblmhml7GhD9qrkaRfKmbMtHfVOCeik7tZlDUqD8QO6_6Q_9K9-a05Py70-OfnlcfxHdHpLpFlvfNf')" class="bg-primary/10 text-primary h-10 w-10 flex items-center justify-center rounded-full hover:bg-primary hover:text-white transition-all outline-none">
+                                        <span class="material-symbols-outlined">add_shopping_cart</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="view-vendor" class="hidden flex-grow w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-16">
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+                <!-- Value Proposition -->
+                <div class="space-y-6">
+                    <span class="inline-block py-1 px-3 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-widest">Para Creadores Conscientes</span>
+                    <h1 class="font-serif text-4xl md:text-5xl text-primary font-bold leading-[1.1] tracking-tight">Únete al primer marketplace de hogar consciente.</h1>
+                    <p class="text-on-surface-variant text-lg leading-relaxed">Aeterna conecta tus formulaciones biodegradables y naturales con una comunidad comprometida con el medio ambiente en Colombia.</p>
+                    <ul class="space-y-4 pt-4">
+                        <li class="flex items-start gap-3">
+                            <span class="material-symbols-outlined text-green-600 mt-0.5">check_circle</span>
+                            <div>
+                                <strong class="block text-primary text-lg">Audiencia Calificada</strong>
+                                <span class="text-sm text-gray-600">Llega a consumidores buscando alternativas ecológicas.</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="material-symbols-outlined text-green-600 mt-0.5">check_circle</span>
+                            <div>
+                                <strong class="block text-primary text-lg">Cero Costos Ocultos</strong>
+                                <span class="text-sm text-gray-600">Comisiones transparentes solo cuando realizas una venta.</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="material-symbols-outlined text-green-600 mt-0.5">check_circle</span>
+                            <div>
+                                <strong class="block text-primary text-lg">Sello de Confianza</strong>
+                                <span class="text-sm text-gray-600">Validamos tus ingredientes para destacar frente al greenwashing.</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Registration Form -->
+                <div class="bg-surface-container-low border border-primary/20 p-8 sm:p-10 rounded-3xl shadow-sm relative">
+                    <h2 class="font-serif text-2xl text-primary font-bold mb-6">Aplica como Vendedor</h2>
+                    <form id="vendor-form" class="space-y-5" onsubmit="processVendorRegistration(event)">
+                        <div>
+                            <label class="block text-xs font-bold text-on-surface-variant uppercase tracking-wider mb-1">Nombre de tu Marca</label>
+                            <input type="text" required class="w-full bg-white border border-gray-200 rounded-xl py-3 px-4 focus:ring-2 focus:ring-primary shadow-sm outline-none" placeholder="Ej. EcoClean S.A.S.">
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-bold text-on-surface-variant uppercase tracking-wider mb-1">Tu Nombre</label>
+                                <input type="text" required class="w-full bg-white border border-gray-200 rounded-xl py-3 px-4 focus:ring-2 focus:ring-primary shadow-sm outline-none" placeholder="Ej. Juan Pérez">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-on-surface-variant uppercase tracking-wider mb-1">WhatsApp</label>
+                                <input type="tel" required class="w-full bg-white border border-gray-200 rounded-xl py-3 px-4 focus:ring-2 focus:ring-primary shadow-sm outline-none" placeholder="+57 300 000 0000">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-on-surface-variant uppercase tracking-wider mb-1">Correo Electrónico</label>
+                            <input type="email" required class="w-full bg-white border border-gray-200 rounded-xl py-3 px-4 focus:ring-2 focus:ring-primary shadow-sm outline-none" placeholder="hola@tumarca.com">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-on-surface-variant uppercase tracking-wider mb-1">¿Qué hace eco-amigables a tus productos?</label>
+                            <textarea required rows="3" class="w-full bg-white border border-gray-200 rounded-xl py-3 px-4 focus:ring-2 focus:ring-primary shadow-sm outline-none resize-none" placeholder="Ingredientes naturales, sin sulfatos, empaque biodegradable..."></textarea>
+                        </div>
+                        <button type="submit" id="btn-vendor-submit" class="w-full bg-primary hover:bg-primary-dark text-white font-bold py-4 rounded-xl mt-4 transition-colors shadow-lg outline-none flex justify-center gap-2">
+                            Enviar Aplicación <span class="material-symbols-outlined">send</span>
+                        </button>
+                    </form>
+
+                    <div id="vendor-success-msg" class="hidden text-center py-10">
+                        <span class="material-symbols-outlined text-6xl text-green-600 mb-4">celebration</span>
+                        <h3 class="font-serif text-2xl text-primary mb-3 font-bold">¡Solicitud Recibida!</h3>
+                        <p class="text-gray-600">Nuestro equipo evaluará tu perfil y formulaciones. Te contactaremos por WhatsApp pronto.</p>
+                        <button onclick="switchView('home'); document.getElementById('vendor-form').classList.remove('hidden'); document.getElementById('vendor-success-msg').classList.add('hidden'); document.getElementById('vendor-form').reset();" class="mt-8 bg-primary/10 text-primary font-bold py-3 px-6 rounded-xl hover:bg-primary transition-colors">Volver al Inicio</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="view-checkout" class="hidden flex-grow w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+            <div class="mb-8">
+                <h1 class="font-serif text-3xl md:text-4xl text-primary mb-2 font-bold tracking-tight">Finalizar Compra</h1>
+                <p class="text-on-surface-variant text-sm"><span class="bg-primary/10 text-primary px-2 py-1 rounded font-bold uppercase text-[10px]">Modo MVP</span> No se realizarán cargos reales a tu tarjeta.</p>
+            </div>
+
+            <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+                <!-- Order Summary -->
+                <div class="lg:col-span-5 bg-white border border-outline-variant/50 rounded-2xl p-6 shadow-sm order-2 lg:order-1 lg:sticky lg:top-28">
+                    <h2 class="font-serif text-xl text-primary font-bold mb-4 border-b border-outline-variant/30 pb-4">Tu Pedido</h2>
+                    <div id="checkout-items" class="space-y-4 mb-6 max-h-[40vh] overflow-y-auto pr-2"></div>
+                    <div class="border-t border-outline-variant/30 pt-4 space-y-3">
+                        <div class="flex justify-between text-on-surface-variant text-sm">
+                            <span>Subtotal</span>
+                            <span id="checkout-subtotal">$0</span>
+                        </div>
+                        <div class="flex justify-between text-on-surface-variant text-sm">
+                            <span>Envío (Nacional)</span>
+                            <span>$10.000</span>
+                        </div>
+                        <div class="flex justify-between text-primary font-bold text-xl pt-2 border-t border-outline-variant/30">
+                            <span>Total</span>
+                            <span id="checkout-total">$0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Payment Form -->
+                <div class="lg:col-span-7 bg-surface-container-low border border-outline-variant/50 rounded-2xl p-6 shadow-sm order-1 lg:order-2">
+                    <form id="payment-form" class="space-y-6" onsubmit="processPayment(event)">
+                        <div class="space-y-4">
+                            <h3 class="text-sm font-bold text-on-surface-variant uppercase tracking-wider">1. Envío</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div><input type="text" required class="w-full bg-white border border-gray-200 rounded-xl py-3 px-4 focus:ring-2 focus:ring-primary shadow-sm outline-none" placeholder="Nombre Completo"></div>
+                                <div><input type="tel" required class="w-full bg-white border border-gray-200 rounded-xl py-3 px-4 focus:ring-2 focus:ring-primary shadow-sm outline-none" placeholder="Teléfono"></div>
+                                <div class="md:col-span-2"><input type="text" required class="w-full bg-white border border-gray-200 rounded-xl py-3 px-4 focus:ring-2 focus:ring-primary shadow-sm outline-none" placeholder="Dirección de Entrega"></div>
+                            </div>
+                        </div>
+                        <div class="space-y-4 pt-4 border-t border-outline-variant/30">
+                            <h3 class="text-sm font-bold text-on-surface-variant uppercase tracking-wider flex items-center gap-2">
+                                2. Pago Seguro <span class="material-symbols-outlined text-sm text-green-600">verified_user</span>
+                            </h3>
+                            <div><input type="text" required pattern="[0-9\s]{13,19}" maxlength="19" class="w-full bg-white border border-gray-200 rounded-xl py-3 px-4 focus:ring-2 focus:ring-primary shadow-sm outline-none" placeholder="Número de Tarjeta (Falsa: 0000 0000 0000 0000)"></div>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div><input type="text" required placeholder="MM/YY" maxlength="5" class="w-full bg-white border border-gray-200 rounded-xl py-3 px-4 focus:ring-2 focus:ring-primary shadow-sm outline-none"></div>
+                                <div><input type="text" required placeholder="CVC" maxlength="4" class="w-full bg-white border border-gray-200 rounded-xl py-3 px-4 focus:ring-2 focus:ring-primary shadow-sm outline-none"></div>
+                            </div>
+                        </div>
+                        <button type="submit" id="btn-pay" class="w-full bg-primary hover:bg-primary-dark text-white font-bold py-4 rounded-xl mt-6 transition-colors shadow-lg outline-none flex justify-center gap-2">
+                            Pagar Ahora (Simular) <span class="material-symbols-outlined">lock</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="bg-surface-dim/80 border-t border-primary/20 py-12 px-4 sm:px-6 lg:px-8 mt-auto w-full">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 items-center">
+            <div class="flex flex-col items-center md:items-start gap-4">
+                <div class="font-serif text-2xl font-bold text-primary/80 flex items-center gap-2 grayscale">
+                    <span class="material-symbols-outlined text-3xl">eco</span> Aeterna
+                </div>
+                <p class="text-sm text-primary/60 text-center md:text-left max-w-xs">Transformando espacios cotidianos en santuarios de bienestar y respeto ambiental en Colombia.</p>
+            </div>
+            <nav class="flex flex-wrap justify-center gap-6 text-sm text-primary/80 font-medium">
+                <a class="hover:text-primary transition-colors cursor-pointer">Sostenibilidad</a>
+                <a onclick="switchView('vendor')" class="hover:text-primary transition-colors cursor-pointer">Vender en Aeterna</a>
+                <a class="hover:text-primary transition-colors cursor-pointer">Términos</a>
+            </nav>
+            <div class="text-center md:text-right flex flex-col items-center md:items-end gap-2">
+                <p class="text-xs text-primary/60">© 2026 Aeterna. Creado con precisión natural.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Loading State Modal -->
+    <section class="hidden fixed inset-0 z-50 bg-surface/95 backdrop-blur-sm flex items-center justify-center p-4 transition-opacity duration-300 opacity-0" id="loading-state">
+        <div class="text-center max-w-md w-full bg-white p-10 rounded-2xl shadow-2xl border border-primary/10 transform scale-95 transition-transform duration-300" id="loading-box">
+            <div class="w-20 h-20 border-4 border-primary/20 border-t-primary rounded-full animate-spin mx-auto mb-8"></div>
+            <h3 class="font-serif text-2xl text-primary mb-3">Analizando Entorno...</h3>
+            <p class="text-gray-500 text-sm italic h-12 flex items-center justify-center" id="loading-text">Cruzando datos con bases de datos ecotoxicológicas...</p>
+        </div>
+    </section>
+
+    <!-- Dynamic Toxicity Success Modal -->
+    <div id="success-modal" class="hidden fixed inset-0 z-[60] flex items-center justify-center bg-black/60 backdrop-blur-sm px-4 transition-opacity duration-300 opacity-0">
+        <div id="success-modal-content" class="bg-surface p-8 sm:p-10 rounded-2xl shadow-2xl max-w-md w-full text-center border border-primary/20 transform scale-95 transition-transform duration-300">
+            <!-- Percentage Circle Graphic -->
+            <div class="mb-6 relative w-32 h-32 mx-auto flex items-center justify-center rounded-full bg-surface-dim/30">
+                <svg class="absolute inset-0 w-full h-full transform -rotate-90 drop-shadow-sm" viewBox="0 0 36 36">
+                    <path class="text-gray-200" stroke-dasharray="100, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="3"></path>
+                    <path id="toxicity-circle" class="text-red-500 transition-all duration-1000 ease-out" stroke-dasharray="0, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"></path>
+                </svg>
+                <div class="text-center z-10 flex flex-col items-center justify-center mt-1">
+                    <span id="toxicity-percentage" class="text-4xl font-serif font-bold text-red-600 leading-none tracking-tighter">0%</span>
+                    <span class="block text-[9px] uppercase tracking-widest font-bold text-gray-500 mt-1">Toxicidad</span>
+                </div>
+            </div>
+            <h3 class="text-2xl font-serif text-primary font-bold mb-3">Nivel de Riesgo</h3>
+            <p id="toxicity-message" class="text-gray-600 mb-8 font-light text-sm leading-relaxed">Calculando el impacto...</p>
+            <button id="close-modal-btn" class="w-full bg-primary hover:bg-primary-dark text-white font-bold py-3.5 px-4 rounded-xl transition-colors shadow-md outline-none flex justify-center items-center gap-2">
+                Ver Alternativas Seguras <span class="material-symbols-outlined">arrow_forward</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Checkout Success Modal -->
+    <div id="checkout-success-modal" class="hidden fixed inset-0 z-[70] flex items-center justify-center bg-black/60 backdrop-blur-sm px-4 transition-opacity duration-300 opacity-0">
+        <div id="checkout-success-modal-content" class="bg-surface p-10 rounded-2xl shadow-2xl max-w-md w-full text-center border border-primary/20 transform scale-95 transition-transform duration-300">
+            <div class="mx-auto flex items-center justify-center h-16 w-16 rounded-full bg-green-100 mb-6">
+                <span class="material-symbols-outlined text-green-600 text-4xl">local_shipping</span>
+            </div>
+            <h3 class="text-2xl font-serif text-primary font-bold mb-3">¡Pedido Confirmado!</h3>
+            <p class="text-gray-600 mb-6 font-light">Gracias por tu compra consciente. Tu número de orden es <br><strong id="checkout-order-number" class="text-xl text-primary block mt-2">#AET-0000</strong></p>
+            <button onclick="document.getElementById('checkout-success-modal').classList.add('hidden'); switchView('catalog');" class="w-full bg-primary hover:bg-primary-dark text-white font-bold py-3.5 px-4 rounded-xl transition-colors shadow-md outline-none">
+                Seguir Explorando
+            </button>
+        </div>
+    </div>
+
+    <!-- Toast Notifications Container -->
+    <div id="toast-container" class="fixed bottom-6 right-6 z-[100] flex flex-col gap-3 pointer-events-none"></div>
+
+    <script>
+        // --- 1. SPA Navigation Logic ---
+        function switchView(viewName) {
+            const views = {
+                home: document.getElementById('view-home'),
+                catalog: document.getElementById('view-catalog'),
+                checkout: document.getElementById('view-checkout'),
+                vendor: document.getElementById('view-vendor')
+            };
+            const navs = {
+                home: document.getElementById('nav-home'),
+                catalog: document.getElementById('nav-catalog'),
+                vendor: document.getElementById('nav-vendor')
+            };
+
+            // Hide all, reset nav styles
+            Object.values(views).forEach(v => { if(v) v.classList.add('hidden'); });
+            Object.values(navs).forEach(n => { if(n) n.className = "text-sm font-medium text-on-surface-variant hover:text-primary transition-colors outline-none"; });
+
+            if (viewName === 'home') {
+                views.home.classList.remove('hidden');
+                if (navs.home) navs.home.className = "text-sm font-bold text-primary border-b-2 border-primary pb-1 outline-none";
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } else if (viewName === 'catalog') {
+                views.catalog.classList.remove('hidden');
+                if (navs.catalog) navs.catalog.className = "text-sm font-bold text-primary border-b-2 border-primary pb-1 outline-none";
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } else if (viewName === 'vendor') {
+                if (views.vendor) views.vendor.classList.remove('hidden');
+                if (navs.vendor) navs.vendor.className = "text-sm font-bold text-primary border-b-2 border-primary pb-1 outline-none";
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } else if (viewName === 'contacto') {
+                views.home.classList.remove('hidden');
+                if (navs.home) navs.home.className = "text-sm font-bold text-primary border-b-2 border-primary pb-1 outline-none";
+                setTimeout(() => document.getElementById('contacto').scrollIntoView({ behavior: 'smooth' }), 100);
+            } else if (viewName === 'checkout') {
+                if (views.checkout) {
+                    views.checkout.classList.remove('hidden');
+                    renderCheckout();
+                }
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
         }
 
-      }, 4500); // 4.5 segundos de carga
-    });
-  </script>
+        // --- 2. Calculator & Toxicity Analysis Logic ---
+        function toggleCard(element) {
+            element.classList.toggle('selected');
+            const checkbox = element.querySelector('input[type="checkbox"]');
+            checkbox.checked = !checkbox.checked;
+        }
+
+        const analyzeBtn = document.getElementById('btn-analyze');
+        const loadingState = document.getElementById('loading-state');
+        const loadingBox = document.getElementById('loading-box');
+        const loadingText = document.getElementById('loading-text');
+        const successModal = document.getElementById('success-modal');
+        const successModalContent = document.getElementById('success-modal-content');
+        const closeModalBtn = document.getElementById('close-modal-btn');
+
+        const phrases = [
+            "Cruzando datos con bases de datos ecotoxicológicas...",
+            "Calculando niveles de bioacumulación...",
+            "Identificando disruptores endocrinos...",
+            "Analizando compuestos volátiles en el aire...",
+            "Generando alternativas sostenibles colombianas..."
+        ];
+
+        analyzeBtn.addEventListener('click', () => {
+            // Calculate Score based on checkboxes
+            const calcCheckboxes = document.querySelectorAll('#calculadora .checkbox-custom');
+            const calcSelected = document.querySelectorAll('#calculadora .checkbox-custom:checked').length;
+            const calcTotal = calcCheckboxes.length;
+            
+            let toxicityScore = 0;
+            if (calcSelected > 0) {
+                // Formula MVP: percentage based on selection + base 10% environmental, max 98%
+                toxicityScore = Math.min(98, Math.round((calcSelected / calcTotal) * 100) + 10);
+            }
+
+            // Determine Message and Color
+            let toxMsg = ""; let colorClass = "text-red-500";
+            if (toxicityScore > 65) {
+                toxMsg = "Tu hogar presenta una carga tóxica ALTA. Es prioritario sustituir estos químicos comerciales para proteger tus vías respiratorias.";
+                colorClass = "text-red-600";
+            } else if (toxicityScore > 30) {
+                toxMsg = "Carga tóxica MODERADA. Estás expuesto a sintéticos innecesarios. Es un excelente momento para iniciar tu transición.";
+                colorClass = "text-orange-500";
+            } else if (toxicityScore > 0) {
+                toxMsg = "Carga tóxica BAJA. Vas por buen camino. Descubre cómo eliminar los últimos químicos de tu rutina.";
+                colorClass = "text-yellow-500";
+            } else {
+                toxMsg = "¡Increíble! Tu selección indica un hogar altamente consciente. Completa tus datos para conocer nuestro catálogo de mantenimiento.";
+                colorClass = "text-green-500";
+            }
+            
+            // Set styles for modal based on result
+            const circleEl = document.getElementById('toxicity-circle');
+            const percentEl = document.getElementById('toxicity-percentage');
+            circleEl.className.baseVal = `transition-all duration-1000 ease-out ${colorClass}`;
+            percentEl.className = `text-4xl font-serif font-bold leading-none tracking-tighter ${colorClass}`;
+
+            // Show Loading Animation
+            loadingState.classList.remove('hidden');
+            setTimeout(() => { loadingState.classList.remove('opacity-0'); loadingBox.classList.remove('scale-95'); }, 10);
+
+            let i = 0;
+            loadingText.textContent = phrases[0];
+            const interval = setInterval(() => {
+                i = (i + 1) % phrases.length;
+                loadingText.style.opacity = 0;
+                setTimeout(() => {
+                    loadingText.textContent = phrases[i];
+                    loadingText.style.opacity = 1;
+                }, 300);
+            }, 1200);
+
+            // Finish after 6 seconds
+            setTimeout(() => {
+                clearInterval(interval);
+                loadingState.classList.add('opacity-0'); loadingBox.classList.add('scale-95');
+                
+                setTimeout(() => {
+                    loadingState.classList.add('hidden');
+                    percentEl.textContent = '0%';
+                    circleEl.setAttribute('stroke-dasharray', `0, 100`);
+                    document.getElementById('toxicity-message').textContent = toxMsg;
+
+                    successModal.classList.remove('hidden');
+                    setTimeout(() => {
+                        successModal.classList.remove('opacity-0'); successModalContent.classList.remove('scale-95');
+                        
+                        // Animate Circular Percentage
+                        setTimeout(() => {
+                            let current = 0;
+                            const counterInterval = setInterval(() => {
+                                if (current >= toxicityScore) { clearInterval(counterInterval); percentEl.textContent = toxicityScore + '%'; } 
+                                else { current += Math.ceil(toxicityScore / 20); if (current > toxicityScore) current = toxicityScore; percentEl.textContent = current + '%'; }
+                            }, 40);
+                            circleEl.setAttribute('stroke-dasharray', `${toxicityScore}, 100`);
+                        }, 400);
+                    }, 10);
+                }, 300);
+            }, 6000);
+        });
+
+        // Close Toxicity Modal -> Go to Form
+        closeModalBtn.addEventListener('click', () => {
+            successModal.classList.add('opacity-0'); successModalContent.classList.add('scale-95');
+            setTimeout(() => {
+                successModal.classList.add('hidden');
+                document.getElementById('contacto').scrollIntoView({ behavior: 'smooth' });
+                const formContainer = document.getElementById('form-container');
+                formContainer.classList.add('ring-4', 'ring-primary/30', 'transition-all', 'duration-500');
+                setTimeout(() => formContainer.classList.remove('ring-4', 'ring-primary/30'), 2000);
+            }, 300);
+        });
+
+        // --- 3. Shopping Cart & Checkout Logic ---
+        let cartItems = [];
+        const cartBadge = document.getElementById('cart-badge');
+        const formatPrice = (num) => new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP', maximumFractionDigits: 0 }).format(num);
+
+        function addToCart(name, price, image) {
+            cartItems.push({ name, price, image });
+            updateCartBadge();
+            const cartBtn = document.getElementById('cart-btn');
+            cartBtn.classList.add('scale-110'); setTimeout(() => cartBtn.classList.remove('scale-110'), 200);
+            showToast(name);
+        }
+
+        function updateCartBadge() {
+            cartBadge.textContent = cartItems.length;
+            if (cartItems.length > 0) { cartBadge.classList.remove('scale-0'); cartBadge.classList.add('scale-100'); } 
+            else { cartBadge.classList.remove('scale-100'); cartBadge.classList.add('scale-0'); }
+        }
+
+        function renderCheckout() {
+            const container = document.getElementById('checkout-items');
+            const subtotalEl = document.getElementById('checkout-subtotal');
+            const totalEl = document.getElementById('checkout-total');
+            const btnPay = document.getElementById('btn-pay');
+            
+            if (cartItems.length === 0) {
+                container.innerHTML = '<p class="text-on-surface-variant text-center py-6">Tu carrito está vacío.</p>';
+                subtotalEl.textContent = '$0'; totalEl.textContent = '$0';
+                btnPay.disabled = true; btnPay.classList.add('opacity-50', 'cursor-not-allowed');
+                return;
+            }
+
+            btnPay.disabled = false; btnPay.classList.remove('opacity-50', 'cursor-not-allowed');
+            container.innerHTML = ''; let subtotal = 0;
+
+            cartItems.forEach((item, index) => {
+                subtotal += item.price;
+                container.innerHTML += `
+                    <div class="flex items-center gap-4 border-b border-outline-variant/20 pb-4 last:border-0 last:pb-0">
+                        <img src="${item.image}" alt="${item.name}" class="w-16 h-16 object-cover rounded-lg bg-surface border border-outline-variant/30">
+                        <div class="flex-grow">
+                            <h4 class="font-bold text-sm text-primary leading-tight">${item.name}</h4>
+                            <p class="text-xs text-on-surface-variant">Cant: 1</p>
+                        </div>
+                        <div class="text-right">
+                            <span class="font-bold text-primary">${formatPrice(item.price)}</span>
+                            <button type="button" onclick="removeFromCart(${index})" class="block text-[10px] text-error hover:underline mt-1 w-full text-right outline-none">Eliminar</button>
+                        </div>
+                    </div>`;
+            });
+
+            subtotalEl.textContent = formatPrice(subtotal);
+            totalEl.textContent = formatPrice(subtotal + 10000); // Envio: 10,000 COP
+        }
+
+        function removeFromCart(index) {
+            cartItems.splice(index, 1); updateCartBadge(); renderCheckout();
+        }
+
+        function processPayment(event) {
+            event.preventDefault();
+            const btn = document.getElementById('btn-pay');
+            const originalText = btn.innerHTML;
+            
+            btn.innerHTML = '<div class="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div> Procesando...';
+            btn.disabled = true;
+
+            setTimeout(() => {
+                document.getElementById('checkout-order-number').textContent = `#AET-${Math.floor(Math.random() * 10000)}`;
+                const modal = document.getElementById('checkout-success-modal');
+                const content = document.getElementById('checkout-success-modal-content');
+                modal.classList.remove('hidden'); setTimeout(() => { modal.classList.remove('opacity-0'); content.classList.remove('scale-95'); }, 10);
+
+                cartItems = []; updateCartBadge(); document.getElementById('payment-form').reset(); renderCheckout();
+                btn.innerHTML = originalText; btn.disabled = false;
+            }, 2000);
+        }
+
+        // --- 4. Vendor Logic ---
+        function processVendorRegistration(event) {
+            event.preventDefault();
+            const btn = document.getElementById('btn-vendor-submit');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<div class="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div> Enviando...';
+            btn.disabled = true;
+
+            setTimeout(() => {
+                document.getElementById('vendor-form').classList.add('hidden');
+                document.getElementById('vendor-success-msg').classList.remove('hidden');
+                btn.innerHTML = originalText; btn.disabled = false;
+            }, 1500);
+        }
+
+        // --- 5. UI Helpers (Toast) ---
+        function showToast(productName) {
+            const toastContainer = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            toast.className = 'toast-enter bg-white border border-primary/20 shadow-xl rounded-xl p-4 flex items-center gap-3 max-w-sm pointer-events-auto';
+            toast.innerHTML = `
+                <div class="bg-primary/10 text-primary rounded-full p-2 flex-shrink-0"><span class="material-symbols-outlined">check_circle</span></div>
+                <div><h4 class="text-sm font-bold text-gray-800">Añadido al carrito</h4><p class="text-xs text-gray-500">${productName}</p></div>
+                <button onclick="this.parentElement.remove()" class="ml-4 text-gray-400 hover:text-primary outline-none"><span class="material-symbols-outlined text-sm">close</span></button>`;
+            toastContainer.appendChild(toast);
+            setTimeout(() => { if(toast.parentElement) { toast.style.opacity = '0'; toast.style.transform = 'translateY(10px)'; toast.style.transition = 'all 0.3s ease-out'; setTimeout(() => toast.remove(), 300); } }, 3000);
+        }
+
+        // Setup transitions
+        document.addEventListener('DOMContentLoaded', () => { document.getElementById('loading-text').style.transition = 'opacity 0.3s ease-in-out'; });
+    </script>
 </body>
 </html>
